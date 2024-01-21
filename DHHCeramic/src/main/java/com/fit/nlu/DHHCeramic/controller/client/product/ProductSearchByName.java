@@ -30,7 +30,9 @@ public class ProductSearchByName extends HttpServlet {
         final String name = request.getParameter("name");
         request.setAttribute("name", name);
         List<Product> productSearchByName = productService.searchByName(name, currentPage, productsPerPage);
+        List<Product> productSale= productService.getProductBySale();
         request.setAttribute("productSearchByName", productSearchByName);
+        request.setAttribute("productSale", productSale);
         int numOfProduct = productSearchByName.size();
         int numOfPages = numOfProduct / productsPerPage;
         if (numOfPages % productsPerPage > 0) {

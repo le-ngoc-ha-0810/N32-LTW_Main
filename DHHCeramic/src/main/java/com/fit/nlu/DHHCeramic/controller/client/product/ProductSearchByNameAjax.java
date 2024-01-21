@@ -36,27 +36,23 @@ public class ProductSearchByNameAjax extends HttpServlet {
         }
         PrintWriter out = response.getWriter();
         for (Product p : productSearchByName) {
-            out.println(
-                    "                        <div class=\"col-sm-4\">\n" +
-                            "                            <div class=\"product-image-wrapper\">\n" +
-                            "                                <a href=\"http://localhost:8080/DHHCeramic/product/detail?id=" + p.getId() + "\">\n" +
-                            "                                <div class=\"single-products\">\n" +
-                            "                                    <div class=\"productinfo text-center\">\n" +
-                            "                                        <div class=\"product-img\">\n" +
-                            "                                                <img src=\"" + p.getImage() + "\" alt=\"\" id=\"img__sp\"/></div>\n" +
-                            "                                        <h4 class=\"home-product-item__name\">" + p.getName() + "</h4>\n" +
-                            "                                    </div>\n" +
-                            "                                    <div class=\"home-product-item__price\">\n" +
-                            "                                        <span class=\"home-product-item__price-old\">" + p.getPrice() + "đ</span>\n" +
-                            "                                        <span class=\"home-product-item__price-current\">" + p.getSaleId() + "đ</span>\n" +
-                            "                                    </div>\n" +
-                            "                                    <div class=\"home-product-item__action\">\n" +
-                            "\t\t\t\t\t\t\t\t\t\t\t<span class=\"home-product-item__like home-product-item__like--liked\">\n" +
-                            "\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"home-product-item__like-icon-empty far fa-heart\"></i>\n" +
-                            "\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"home-product-item__like-icon-fill fas fa-heart\"></i>\n" +
-                            "\t\t\t\t\t\t\t\t\t\t\t</span>\n" +
-                            "                                        <div class=\"home-product-item__rating\">\n");
-
+            out.println("<div class=\"col-lg-4 col-md-6 col-sm-6 show-product\"");
+            out.println("     onclick=\"window.location.href='${pageContext.request.contextPath}/product/detail?id=${p.id}'\">");
+            out.println("    <div class=\"product__item\">");
+            out.println("        <div class=\"product__item__pic set-bg\" data-setbg=\"" + p.getImage() + "\">");
+            out.println("            <ul class=\"product__item__pic__hover\">");
+            out.println("                <li><a href=\"#\"><i class=\"fa fa-heart\"></i></a></li>");
+            out.println("                <li><a href=\"#\"><i class=\"fa fa-retweet\"></i></a></li>");
+            out.println("                <li><a href=\"#\"><i class=\"fa fa-shopping-cart\"></i></a></li>");
+            out.println("            </ul>");
+            out.println("        </div>");
+            out.println("        <div class=\"product__item__text\">");
+            out.println("            <span>" + p.getCategory().getName() + "</span>");
+            out.println("            <h6><a href=\"#\">" + p.getName() + "</a></h6>");
+            out.println("            <h5>" + p.getPrice() + " VND</h5>");
+            out.println("        </div>");
+            out.println("    </div>");
+            out.println("</div>");
         }
 
     }
