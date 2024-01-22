@@ -1,6 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
+<%@ page buffer="64kb" %>
+<%@ page buffer="64kb" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +30,7 @@
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb side">
-            <li class="breadcrumb-item active"><a href="#"><b>Danh sách đơn hàng</b></a></li>
+            <li class="breadcrumb-item active"><a href="#"><b>Danh sách liên hệ</b></a></li>
         </ul>
         <div id="clock"></div>
     </div>
@@ -38,19 +40,23 @@
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
+                            <a class="btn btn-delete btn-sm print-file" type="button" title="In"
+                               onclick="myApp.printTable()"><i
                                     class="fas fa-print"></i> In dữ liệu</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i
+                            <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button"
+                               title="Sao chép"><i
                                     class="fas fa-copy"></i> Sao chép</a>
                         </div>
 
                         <div class="col-sm-2">
-                            <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                            <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất
+                                Excel</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
+                            <a class="btn btn-delete btn-sm pdf-file" type="button" title="In"
+                               onclick="myFunction(this)"><i
                                     class="fas fa-file-pdf"></i> Xuất PDF</a>
                         </div>
                         <div class="col-sm-2">
@@ -70,30 +76,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>0837</td>
-                            <td>Triệu Thanh Phú</td>
-                            <td>tp@gmail.com</td>
-                            <td>Hài lòng</td>
-                            <td>Tôi rất hài lòng với chất lượng gạch lát nền Mỹ Ý, mong muốn cửa hàng có thêm nhiều mẫu màu mới nữa</td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>8265</td>
-                            <td>Nguyễn Thị Ngọc Cẩm</td>
-                            <td>ngocc@gmail.com</td>
-                            <td>Đề xuất cải tiến</td>
-                            <td>Gợi ý thêm mẫu gạch mới và cải thiện dịch vụ.</td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>9835</td>
-                            <td>Đặng Hoàng Phúc</td>
-                            <td>phuc@gmail.com</td>
-                            <td>Phàn nàn</td>
-                            <td>Giao hàng trễ quá, mong cải thiện.</td>
-                        </tr>
+                        <c:forEach items="${contactList}" var="c">
+                            <tr>
+                                <td width="10"><input type="checkbox" name="check1" value="1"></td>
+                                <td>${c.id}</td>
+                                <td>${c.name}</td>
+                                <td>${c.email}</td>
+                                <td>${c.title}</td>
+                                <td>${c.message}</td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -102,19 +94,19 @@
     </div>
 </main>
 <<!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/src/jquery.table2excel.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">$('#sampleTable').DataTable();</script>
 <script>
@@ -122,6 +114,7 @@
         var i = r.parentNode.parentNode.rowIndex;
         document.getElementById("myTable").deleteRow(i);
     }
+
     jQuery(function () {
         jQuery(".trash").click(function () {
             swal({
@@ -132,9 +125,7 @@
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        swal("Đã xóa thành công.!", {
-
-                        });
+                        swal("Đã xóa thành công.!", {});
                     }
                 });
         });
@@ -197,6 +188,7 @@
             return i;
         }
     }
+
     //In dữ liệu
     var myApp = new function () {
         this.printTable = function () {
@@ -227,7 +219,7 @@
 
     //Modal
     $("#show-emp").on("click", function () {
-        $("#ModalUP").modal({ backdrop: false, keyboard: false })
+        $("#ModalUP").modal({backdrop: false, keyboard: false})
     });
 </script>
 </body>

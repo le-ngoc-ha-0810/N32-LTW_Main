@@ -38,19 +38,23 @@
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
+                            <a class="btn btn-delete btn-sm print-file" type="button" title="In"
+                               onclick="myApp.printTable()"><i
                                     class="fas fa-print"></i> In dữ liệu</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button" title="Sao chép"><i
+                            <a class="btn btn-delete btn-sm print-file js-textareacopybtn" type="button"
+                               title="Sao chép"><i
                                     class="fas fa-copy"></i> Sao chép</a>
                         </div>
 
                         <div class="col-sm-2">
-                            <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất Excel</a>
+                            <a class="btn btn-excel btn-sm" href="" title="In"><i class="fas fa-file-excel"></i> Xuất
+                                Excel</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm pdf-file" type="button" title="In" onclick="myFunction(this)"><i
+                            <a class="btn btn-delete btn-sm pdf-file" type="button" title="In"
+                               onclick="myFunction(this)"><i
                                     class="fas fa-file-pdf"></i> Xuất PDF</a>
                         </div>
                         <div class="col-sm-2">
@@ -62,81 +66,33 @@
                         <thead>
                         <tr>
                             <th width="10"><input type="checkbox" id="all"></th>
-                            <th>ID</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Tên người dùng</th>
-                            <th>Hình ảnh</th>
-                            <th>Xếp hạng</th>
+                            <th>Mã bình luận</th>
+                            <th>Người bình luận</th>
+                            <th>Avatar</th>
+                            <th>Sao đánh giá</th>
                             <th>Nội dung</th>
+                            <th>Thời gian</th>
                             <th width="50">Tính năng</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>1</td>
-                            <td>Gạch lát nền Prime 40x40</td>
-                            <td>thanhphu124</td>
-                            <td><img class="img-card-person" src="${url}/img-anhthe/1.jpg" alt=""></td>
-                            <td>5</td>
-                            <td>Sản phẩm rất tốt, tôi rất hài lòng.  </td>
-                            <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                                onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>2</td>
-                            <td>Gạch lát cầu thang 60x90</td>
-                            <td>phuong vi</td>
-                            <td><img class="img-card-person" src="${url}/img-anhthe/1.jpg" alt=""></td>
-                            <td>4</td>
-                            <td>Đẹp nhưng giá hơi cao so với mặt bằng chung.</td>
-                            <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                                onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>3</td>
-                            <td>Gạch kính lấy sáng 40x40</td>
-                            <td>hahaha</td>
-                            <td><img class="img-card-person" src="${url}/img-anhthe/1.jpg" alt=""></td>
-                            <td>3</td>
-                            <td>Cần cải thiện về chất lượng đóng gói.  </td>
-                            <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                                onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>4</td>
-                            <td>Gạch ốp tường 40x60</td>
-                            <td>minh huyy</td>
-                            <td><img class="img-card-person" src="${url}/img-anhthe/1.jpg" alt=""></td>
-                            <td>5</td>
-                            <td>Không có gì để phàn nàn, sản phẩm hoàn hảo.</td>
-                            <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                                onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                            </button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>5</td>
-                            <td>Gạch lát sân vườn 40x40</td>
-                            <td>ngoc diepp</td>
-                            <td><img class="img-card-person" src="${url}/img-anhthe/1.jpg" alt=""></td>
-                            <td>2</td>
-                            <td>Đã gặp vấn đề với một số viên gạch.</td>
-                            <td class="table-td-center"><button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                                                onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                            </button>
-                            </td>
-                        </tr>
+                        <c:forEach items="${commentList}" var="c">
+                            <tr>
+                                <td>${c.id}</td>
+                                <td>${c.username}</td>
+                                <c:url value="${c.avatar }" var="imgUrl"></c:url>
+                                <td><img src="${imgUrl}" alt=""
+                                         style="width:30px; height: 30px;margin: 0 auto;display: block"></td>
+                                <td>${c.rating}</td>
+                                <td>${c.content}</td>
+                                <td>${c.time}</td>
+                                <td class="table-td-center">
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                                            onclick="confirmDelete(${account.id})"><i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -145,43 +101,34 @@
     </div>
 </main>
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/src/jquery.table2excel.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">$('#sampleTable').DataTable();</script>
 <script>
-    function deleteRow(r) {
-        var i = r.parentNode.parentNode.rowIndex;
-        document.getElementById("myTable").deleteRow(i);
-    }
-    jQuery(function () {
-        jQuery(".trash").click(function () {
-            swal({
-                title: "Cảnh báo",
-
-                text: "Bạn có chắc chắn là muốn xóa đơn hàng này?",
-                buttons: ["Hủy bỏ", "Đồng ý"],
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal("Đã xóa thành công.!", {
-
-                        });
-                    }
-                });
+    function confirmDelete(userId) {
+        swal({
+            title: "Cảnh báo",
+            text: "Bạn có chắc chắn muốn xóa người dùng này?",
+            buttons: ["Hủy bỏ", "Đồng ý"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "${pageContext.request.contextPath}/Admin/comment/delete?id=" + userId;
+            }
         });
-    });
+    }
+
     oTable = $('#sampleTable').dataTable();
     $('#all').click(function (e) {
         $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));
@@ -240,6 +187,7 @@
             return i;
         }
     }
+
     //In dữ liệu
     var myApp = new function () {
         this.printTable = function () {
@@ -270,7 +218,7 @@
 
     //Modal
     $("#show-emp").on("click", function () {
-        $("#ModalUP").modal({ backdrop: false, keyboard: false })
+        $("#ModalUP").modal({backdrop: false, keyboard: false})
     });
 </script>
 </body>

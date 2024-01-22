@@ -38,8 +38,8 @@
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
-
-                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/view/client/view/form-add-blog.jsp" title="Thêm"><i
+                            <a class="btn btn-add btn-sm"
+                               href="${pageContext.request.contextPath}/Admin/blog/add" title="Thêm"><i
                                     class="fas fa-plus"></i>
                                 Tạo mới tin tức</a>
                         </div>
@@ -89,103 +89,29 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <c:forEach items="${blogList}" var="blog">
                             <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>71309005</td>
-                            <td>LỰA CHỌN AN TOÀN CHO NGÔI NHÀ CỦA ÔNG BÀ</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>24 tháng 10, 2023</td>
-                            <td><span class="badge bg-success">Sức khỏe</span></td>
-                            <td>Không gian phòng ngủ của ông bà cần phải
-                                được cân nhắc và tính toán sao cho hợp lý, phù hợp với sức khỏe và thuận tiện
-                                với...</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
+                            <td>${blog.id}</td>
+                            <td>${blog.title}</td>
+                            <c:url value="${blog.image }" var="imgUrl"></c:url>
+                            <td><img src="${imgUrl}" alt="" width="100px;"></td>
+                            <td>${blog.blogCate}</td>
+                            <td><span class="badge bg-success">${blog.date}</span></td>
+                            <td>${blog.des}
                             </td>
+                                <td class="table-td-center">
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                                            onclick="confirmDelete(${blog.id})"><i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <a href="${pageContext.request.contextPath}/Admin/news/edit?id=${blog.id}">
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
+                                                id="show-emp"
+                                                data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                                        </button>
+                                    </a>
+                                </td>
                         </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>61304005</td>
-                            <td>HÃY ĐỂ NHÀ LÀ NƠI CHỮA LÀNH TÂM HỒN</td>
-                            <td><img src="${url}/img-sanpham/reno.jpg" alt="" width="100px;"></td>
-                            <td>14 tháng 10, 2023</td>
-                            <td><span class="badge bg-success">Tâm lý</span></td>
-                            <td>hám phá xu hướng và lợi ích của Gạch lát nền vân gỗ
-                                trong thiết kế không gian. Bài viết này sẽ tập trung vào khả năng tạo cảm giác ấm áp
-                                và bình yên...</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>62304003</td>
-                            <td>PHÒNG TẮM MỞ PHÓNG KHOÁNG ĐỂ THƯ GIÃN TỐI ĐA</td>
-                            <td><img src="${url}/img-sanpham/matda.jpg" alt="" width="100px;"></td>
-                            <td>11 tháng 10, 2023</td>
-                            <td><span class="badge bg-success">Phong cách</span></td>
-                            <td>Phòng tắm hiện
-                                đại ngày nay không đơn thuần là “công trình phụ” khép kín mà thay vào đó...</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>72638003</td>
-                            <td>PHÒNG TẮM CHILL CHO ĐỜI THÊM YÊU</td>
-                            <td><img src="${url}/img-sanpham/ghethera.jpg" alt="" width="100px;"></td>
-                            <td>29 tháng 9, 2023</td>
-                            <td><span class="badge bg-success">Đời sống</span></td>
-                            <td>Phòng tắm không chỉ là nơi sinh hoạt riêng tư mà còn
-                                là nơi giúp thư giãn. Do vậy, đầu tư thiết kế không gian này sẽ nâng cao chất lượng
-                                cuộc...</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>72109004</td>
-                            <td>THAY GỖ CHĂM SÓC CHO CON</td>
-                            <td><img src="${url}/img-sanpham/zuno.jpg" alt="" width="100px;"></td>
-                            <td>4 tháng,2019</td>
-                            <td><span class="badge bg-success">Sức khỏe</span></td>
-                            <td>Trong quá trình xây dựng và trang trí phòng ngủ cho trẻ, lựa
-                                chọn vật liệu phù hợp để bảo vệ sức khỏe và tạo nên không...</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -194,78 +120,21 @@
     </div>
 </main>
 
-<!--
-  MODAL
--->
-<div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
-     data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group  col-md-12">
-          <span class="thong-tin-thanh-toan">
-            <h5>Chỉnh sửa bản tin tức cơ bản</h5>
-          </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mã tin tức </label>
-                        <input class="form-control" type="number" value="71309005">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Tiêu đề tin tức</label>
-                        <input class="form-control" type="text" required value="THAY GỖ CHĂM SÓC CHO CON">
-                    </div>
-                    <div class="form-group  col-md-6">
-                        <label class="control-label">Ngày tạo tin tức</label>
-                        <input class="form-control" type="date" required value="29 tháng 9, 2023">
-                    </div>
-                    <div class="form-group col-md-6 ">
-                        <label for="exampleSelect1" class="control-label">Loại tin tức</label>
-                        <select class="form-control" id="exampleSelect1">
-                            <option>Sức khỏe</option>
-                            <option>Đời sống</option>
-                            <option>Tâm lý</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mô tả</label>
-                        <input class="form-control" type="text" value="Trong quá trình xây dựng và trang trí phòng ngủ cho trẻ, lựa chọn vật liệu phù hợp để bảo vệ sức khỏe và tạo nên không...">
-                    </div>
-                </div>
-                <BR>
-                <BR>
-                <BR>
-                <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                <BR>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-<!--
-MODAL
--->
 
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/src/jquery.table2excel.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 <script type="text/javascript">
     $('#sampleTable').DataTable();
 
@@ -311,25 +180,17 @@ MODAL
     }
 </script>
 <script>
-    function deleteRow(r) {
-        var i = r.parentNode.parentNode.rowIndex;
-        document.getElementById("myTable").deleteRow(i);
-    }
-
-    jQuery(function () {
-        jQuery(".trash").click(function () {
-            swal({
-                title: "Cảnh báo",
-                text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
-                buttons: ["Hủy bỏ", "Đồng ý"],
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal("Đã xóa thành công.!", {});
-                    }
-                });
+    function confirmDelete(blogId) {
+        swal({
+            title: "Cảnh báo",
+            text: "Bạn có chắc chắn muốn xóa người dùng này?",
+            buttons: ["Hủy bỏ", "Đồng ý"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "${pageContext.request.contextPath}/Admin/blog/delete?id=" + blogId;
+            }
         });
-    });
+    }
     oTable = $('#sampleTable').dataTable();
     $('#all').click(function (e) {
         $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));

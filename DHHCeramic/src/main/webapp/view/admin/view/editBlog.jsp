@@ -5,7 +5,7 @@
 <html lang="en">
 
 <head>
-    <title>Thêm tin tức | Quản trị Admin</title>
+    <title>Chỉnh sửa tin tức | Quản trị Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -140,38 +140,39 @@
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item">Danh sách tin tức</li>
-            <li class="breadcrumb-item"><a href="#">Thêm tin tức</a></li>
+            <li class="breadcrumb-item"><a href="#">Chỉnh sửa tin tức</a></li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Tạo mới tin tức</h3>
+                <h3 class="tile-title">Chỉnh sửa tin tức</h3>
                 <div class="tile-body">
-                    <form class="row" role="form" action="${pageContext.request.contextPath}/Admin/blog/add"
+                    <form class="row" role="form" action="${pageContext.request.contextPath}/Admin/news/edit"
                           method="post">
+                        <input type="hidden" name="id" value="${blog.id}">
                         <input type="hidden" name="user"
                                value="${sessionScope.account.username}">
                         <div class="form-group col-md-6">
                             <label class="control-label">Tiêu đề tin tức</label>
-                            <input class="form-control" type="text" name="title" required>
+                            <input class="form-control" type="text" name="title" value="${blog.title}" required>
                         </div>
                         <div class="form-group  col-md-6">
                             <label class="control-label">Ngày tạo tin tức</label>
-                            <input class="form-control" type="date" name="date" required>
+                            <input class="form-control" type="date" name="date"  value="${blog.date}"  required>
                         </div>
                         <div class="form-group col-md-6 ">
                             <label class="control-label">Loại tin tức</label>
-                            <input class="form-control" type="text" name="blogCate" required>
+                            <input class="form-control" type="text" name="blogCate"  value="${blog.blogCate}"  required>
                         </div>
                         <div class="form-group col-md-12">
                             <input type="button" value="Tải ảnh lên"
                                    onclick="BrowseServer();" class="btn btn-controls"/>
-                            <input class="form-control" type="text" name="image" id="avatar">
+                            <input class="form-control" type="text" name="image" id="avatar"  value="${blog.image}" >
                         </div>
                         <div class="form-group col-md-12">
                             <label class="control-label">Mô tả tin tức</label>
-                            <textarea class="form-control" name="des" id="mota"></textarea>
+                            <textarea class="form-control" name="des" id="mota"> ${blog.des}</textarea>
                             <script>CKEDITOR.replace('des');</script>
                         </div>
 
