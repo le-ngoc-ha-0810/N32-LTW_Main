@@ -6,7 +6,7 @@
 <html lang="en">
 
 <head>
-    <title>Thêm sản phẩm | Quản trị Admin</title>
+    <title>Thêm ảnh | Quản trị Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -141,7 +141,7 @@
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item">Danh sách sản phẩm</li>
-            <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+            <li class="breadcrumb-item"><a href="#">Thêm ảnh cho sản phẩm</a></li>
         </ul>
     </div>
     <div class="row">
@@ -155,53 +155,36 @@
                                     class="fas fa-folder-plus"></i> Thêm nhà cung cấp</a>
                         </div>
                     </div>
-                    <form class="row" action="add" method="post">
+                    <form class="row" role="form" action="${pageContext.request.contextPath}/Admin/product/image-add?id=${id}"
+                          method="post">
                         <input type="hidden" name="user"
                                value="${sessionScope.account.username}"/>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Tên sản phẩm</label>
-                            <input class="form-control" type="text" name="name" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Giá giảm</label>
-                            <input class="form-control" type="text" name="saleId">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Kích thước</label>
-                            <input class="form-control" type="text" name="size">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Mô tả</label>
-                            <input class="form-control" type="text" name="des" >
-                        </div>
-                        <div class="form-group  col-md-6">
-                            <label class="control-label">Số lượng</label>
-                            <input class="form-control" type="text" name="stock" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Giá bán</label>
-                            <input class="form-control" type="text" name="price">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Tên loại gạch</label>
-                            <input type="text" name="category" list="categories"/>
-                            <datalist id="categories">
-                                <c:forEach var="category" items="${categories}">
-                                <option value="${category.name}">
-                                    </c:forEach>
-                            </datalist>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Nguồn gốc</label>
-                            <input class="form-control" type="text" name="manufacture">
-                        </div>
                         <div class="form-group col-md-12">
+                            <label>Ảnh 1</label>
                             <input type="button" value="Tải ảnh lên"
                                    onclick="BrowseServer();" class="btn btn-controls"/>
-                            <input type="text" name="image" id="image">
+                            <input type="text" name="image1" id="avatar1">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Ảnh 2</label>
+                            <input type="button" value="Tải ảnh lên"
+                                   onclick="BrowseServer();" class="btn btn-controls"/>
+                            <input type="text" name="image2" id="avatar2">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Ảnh 3</label>
+                            <input type="button" value="Tải ảnh lên"
+                                   onclick="BrowseServer();" class="btn btn-controls"/>
+                            <input type="text" name="image3" id="avatar3">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Ảnh 4</label>
+                            <input type="button" value="Tải ảnh lên"
+                                   onclick="BrowseServer();" class="btn btn-controls"/>
+                            <input type="text" name="image4" id="avatar5">
                         </div>
                         <button class="btn btn-save" type="submit">Lưu lại</button>
-                        <a class="btn btn-cancel" href="${pageContext.request.contextPath}/Admin/blog/list">Hủy bỏ</a>
+                        <a class="btn btn-cancel" href="${pageContext.request.contextPath}/Admin/product/list">Hủy bỏ</a>
                     </form>
                 </div>
 

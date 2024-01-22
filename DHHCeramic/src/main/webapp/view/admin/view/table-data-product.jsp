@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
+<%@ page buffer="64kb" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,14 +40,14 @@
                     <div class="row element-button">
                         <div class="col-sm-2">
 
-                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/view/client/view/form-add-san-pham.jsp" title="Thêm"><i
+                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/Admin/product/add"
+                               title="Thêm"><i
                                     class="fas fa-plus"></i>
                                 Tạo mới sản phẩm</a>
                         </div>
                         <div class="col-sm-2">
-                            <a class="btn btn-delete btn-sm nhap-tu-file" type="button" title="Nhập"
-                               onclick="myFunction(this)"><i
-                                    class="fas fa-file-upload"></i> Tải từ file</a>
+                            <a class="btn btn-delete btn-sm print-file" type="button" title="In" onclick="myApp.printTable()"><i
+                                    class="fas fa-print"></i> In dữ liệu</a>
                         </div>
 
                         <div class="col-sm-2">
@@ -81,8 +82,8 @@
                             <th>Mã sản phẩm</th>
                             <th>Tên sản phẩm
                             <th>Ảnh</th>
-                            <th>Mã loại</th>
-                            <th>Mã giảm</th>
+                            <th>Tên loại sản phẩm</th>
+                            <th>Giá giảm</th>
                             <th>Kích thước</th>
                             <th>Mô tả</th>
                             <th>Giá tiền</th>
@@ -91,300 +92,37 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>1</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>2</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>3</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>4</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>5</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>6</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>7</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>8</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>9</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>11</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>12</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>13</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>14</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>15</td>
-                            <td>Gạch lát cầu thang 12816K</td>
-                            <td><img src="${url}/img-sanpham/theresa.jpg" alt="" width="100px;"></td>
-                            <td>GLCT</td>
-                            <td>020</td>
-                            <td>50x90</td>
-                            <td>Gạch lát cầu thang trắng sọc đẹp</td>
-                            <td>5.600.000 VND</td>
-                            <td>Việt Nam</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
+                        <c:forEach items="${productList}" var="pro">
+                            <tr>
+                                <td width="10"><input type="checkbox" name="check1" value="1"></td>
+                                <td>${pro.id}</td>
+                                <td>${pro.name}</td>
+                                <c:url value="${pro.image }" var="imgUrl"></c:url>
+                                <td><img src="${imgUrl}" alt="" width="100px;"></td>
+                                <td>${pro.category.name}</td>
+                                <td>${pro.saleId}</td>
+                                <td>${pro.size}</td>
+                                <td>${pro.des}</td>
+                                <td>${pro.price}</td>
+                                <td>${pro.manufacture}</td>
+                                <td class="table-td-center">
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                                            onclick="confirmDelete(${pro.id})"><i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <a href="${pageContext.request.contextPath}/Admin/product/edit?id=${pro.id}">
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
+                                                id="show-emp"
+                                                data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                                        </button>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/Admin/product/image-add?id=${pro.id}">
+                                            <button type="button" class="btn btn-primary btn-sm-outline" title="Ảnh" style="width:35px;background-color: #bbefbb;">
+                                                <i class="fas fa-image" style="color:green;"></i>
+                                            </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -393,91 +131,22 @@
     </div>
 </main>
 
-<!--
-  MODAL
--->
-<div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
-     data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group  col-md-12">
-          <span class="thong-tin-thanh-toan">
-            <h5>Chỉnh sửa thông tin sản phẩm cơ bản</h5>
-          </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mã sản phẩm</label>
-                        <input class="form-control" type="text" value="1">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Tên sản phẩm</label>
-                        <input class="form-control" type="text" required value="Gạch lát nền hình chim hạc">
-                    </div>
-                    <div class="form-group  col-md-6">
-                        <label class="control-label">Mã loại</label>
-                        <input class="form-control" type="text" required value="GLCT">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mã giảm</label>
-                        <input class="form-control" type="text" value="020">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Kích thước</label>
-                        <input class="form-control" type="text" value="20x20">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mô tả</label>
-                        <input class="form-control" type="text" value="Sản phầm gạch men sáng đẹp">
-                    </div>
-                    <div class="form-group  col-md-6">
-                        <label class="control-label">Số lượng</label>
-                        <input class="form-control" type="number" required value="20">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Giá bán</label>
-                        <input class="form-control" type="text" value="5.600.000">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Nguồn gốc</label>
-                        <input class="form-control" type="text" value="Việt Nam">
-                    </div>
-                </div>
-                <BR>
-                <BR>
-                <BR>
-                <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                <BR>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-<!--
-MODAL
--->
 
 <!-- Essential javascripts for application to work-->
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/src/jquery.table2excel.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $('#sampleTable').DataTable();
@@ -524,25 +193,18 @@ MODAL
     }
 </script>
 <script>
-    function deleteRow(r) {
-        var i = r.parentNode.parentNode.rowIndex;
-        document.getElementById("myTable").deleteRow(i);
+    function confirmDelete(blogId) {
+        swal({
+            title: "Cảnh báo",
+            text: "Bạn có chắc chắn muốn xóa người dùng này?",
+            buttons: ["Hủy bỏ", "Đồng ý"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "${pageContext.request.contextPath}/Admin/product/delete?id=" + blogId;
+            }
+        });
     }
 
-    jQuery(function () {
-        jQuery(".trash").click(function () {
-            swal({
-                title: "Cảnh báo",
-                text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
-                buttons: ["Hủy bỏ", "Đồng ý"],
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal("Đã xóa thành công.!", {});
-                    }
-                });
-        });
-    });
     oTable = $('#sampleTable').dataTable();
     $('#all').click(function (e) {
         $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));

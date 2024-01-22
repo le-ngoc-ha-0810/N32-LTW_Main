@@ -1,12 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
-<%@ page buffer="64kb" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Thêm sản phẩm | Quản trị Admin</title>
+    <title>Chỉnh sửa sản phẩm | Quản trị Admin</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -141,13 +140,13 @@
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item">Danh sách sản phẩm</li>
-            <li class="breadcrumb-item"><a href="#">Thêm sản phẩm</a></li>
+            <li class="breadcrumb-item"><a href="#">Chỉnh sửa sản phẩm</a></li>
         </ul>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="tile">
-                <h3 class="tile-title">Tạo mới sản phẩm</h3>
+                <h3 class="tile-title">Chỉnh sửa sản phẩm</h3>
                 <div class="tile-body">
                     <div class="row element-button">
                         <div class="col-sm-2">
@@ -155,36 +154,39 @@
                                     class="fas fa-folder-plus"></i> Thêm nhà cung cấp</a>
                         </div>
                     </div>
-                    <form class="row" action="add" method="post">
+                    <form class="row" role="form"
+                          action="${pageContext.request.contextPath}/Admin/product/edit?id=${product.id}"
+                          method="post">
                         <input type="hidden" name="user"
                                value="${sessionScope.account.username}"/>
                         <div class="form-group col-md-6">
                             <label class="control-label">Tên sản phẩm</label>
-                            <input class="form-control" type="text" name="name" required>
+                            <input class="form-control" type="text" name="name" value="${product.name}" required>
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Giá giảm</label>
-                            <input class="form-control" type="text" name="saleId">
+                            <input class="form-control" type="text" name="saleId" value="${product.saleId}">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Kích thước</label>
-                            <input class="form-control" type="text" name="size">
+                            <input class="form-control" type="text" name="size" value="${product.size}">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Mô tả</label>
-                            <input class="form-control" type="text" name="des" >
+                            <input class="form-control" type="text" name="des" value="${product.des}">
                         </div>
                         <div class="form-group  col-md-6">
                             <label class="control-label">Số lượng</label>
-                            <input class="form-control" type="text" name="stock" required>
+                            <input class="form-control" type="number" name="stock" required value="${product.stock}">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Giá bán</label>
-                            <input class="form-control" type="text" name="price">
+                            <input class="form-control" type="text" name="price" value="${product.price}">
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Tên loại gạch</label>
-                            <input type="text" name="category" list="categories"/>
+                            <input type="text" name="category" class="form-control"
+                                   value="${product.category.name}" list="categories">
                             <datalist id="categories">
                                 <c:forEach var="category" items="${categories}">
                                 <option value="${category.name}">
@@ -193,12 +195,12 @@
                         </div>
                         <div class="form-group col-md-6">
                             <label class="control-label">Nguồn gốc</label>
-                            <input class="form-control" type="text" name="manufacture">
+                            <input class="form-control" type="text" name="manufacture" value="${product.manufacture}">
                         </div>
                         <div class="form-group col-md-12">
                             <input type="button" value="Tải ảnh lên"
                                    onclick="BrowseServer();" class="btn btn-controls"/>
-                            <input type="text" name="image" id="image">
+                            <input class="form-control" type="text" name="avatar" id="image" value="${product.image}">
                         </div>
                         <button class="btn btn-save" type="submit">Lưu lại</button>
                         <a class="btn btn-cancel" href="${pageContext.request.contextPath}/Admin/blog/list">Hủy bỏ</a>
