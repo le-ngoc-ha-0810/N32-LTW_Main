@@ -55,10 +55,10 @@
                                     </c:otherwise>
                                 </c:choose>
                                 <ul class="header__cart__dropdown">
-                                    <li><a href="${pageContext.request.contextPath}/view/client/view/account.jsp"><i
+                                    <li><a href="${pageContext.request.contextPath }/member/myAccount?id=${sessionScope.account.id}"><i
                                             class="fa fa-user"></i> Tài khoản</a></li>
                                     <li><a href="#"><i class="fa fa-gear"></i> Cài đặt</a></li>
-                                    <li><a href="#"><i class="fa fa-receipt"></i> Đơn mua</a></li>
+                                    <li><a href="${pageContext.request.contextPath }/member/cart"><i class="fa fa-receipt"></i> Đơn mua</a></li>
                                     <li><a href="${pageContext.request.contextPath }/logout"><i
                                             class="fa-solid fa-right-from-bracket"></i> Đăng xuất</a></li>
                                 </ul>
@@ -81,13 +81,13 @@
                             <li class="header__nav-item header__nav-item-has-product">
                                 <a href="${pageContext.request.contextPath }/member/cart" class="header__nav-item-link">
                                     <i class="fas fa-shopping-cart"><c:set var="count" value="${0}"/></i>
-                                </a>
+
                                 <c:forEach items="${sessionScope.cart}" var="map">
                                     <c:set var="count" value="${count + 1}"/>
                                 </c:forEach>
-                                <span>${count }</span>
+                                <span>${count }</span> </a>
                                 <c:choose>
-                                    <c:when test="${sessionScope.account.avatar==null}">
+                                    <c:when test="${sessionScope.account.username==null}">
                                         <div class="header__no-cart">
 <%--                                            <img src="${url}/img/home/no-cart.png" class="img__no-cart">--%>
                                             <div class="no__cart-text">
