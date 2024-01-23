@@ -485,10 +485,10 @@
                 <!--Password must contain one lowercase letter, one number, and be at least 7 characters long.-->
 
                 <div class="card-text">
-                    <form>
+                    <form action="${pageContext.request.contextPath}/member/change-password" method="post">
                         <div class="alert alert-danger alert-dismissible show" role="alert">
                             <strong>Xin chào!</strong> Vui lòng điền vào các trường bên dưới để đổi mật khẩu
-                            <input name="id" value="0" hidden="true">
+                            <input name="id" value="${sessionScope.account.id }" hidden="true">
                             <a class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </a>
@@ -524,6 +524,7 @@
 <script src="${url}/js/owl.carousel.min.js"></script>
 <script src="${url}/js/main.js"></script>
 <script src="${url}/js/account.js"></script>
+<script src="${pageContext.request.contextPath}/CKLibraries/ckfinder/ckfinder.js"></script>
 
 <script type="text/javascript">
     function BrowseServer() {
@@ -539,17 +540,18 @@
     function removeCartItem(param) {
         var txtSearch = param;
         $.ajax({
-            url: '',
+            url:  '/DHHCeramic/myAccount/remove-ordered-item',
             type: 'GET',
             data: {
                 id: txtSearch,
-                user_id: 0
+                user_id: ${sessionScope.account.id},
+                timestamp: new Date().getTime() // Thêm timestamp hoặc tham số ngẫu nhiên
             },
             success: function (data) {
+                console.log("Received data:", data); // Thêm dòng này để kiểm tra giá trị của data
                 var row = document.getElementById('contentProduct');
+                row.innerHTML = '';
                 row.innerHTML = data;
-
-
             }
         });
     }
