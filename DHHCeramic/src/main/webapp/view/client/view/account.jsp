@@ -131,17 +131,25 @@
                 <div class="content-panel">
                     <div id="information">
                         <h2 class="title">Hồ sơ</h2>
-                        <form class="form-horizontal">
-                            <input name="role" value="2" hidden="true">
-                            <input name="id" value="0" hidden="true">
+                        <form class="form-horizontal" action="${pageContext.request.contextPath}/member/myAccount"
+                              method="post">
+                            <input name="role" value="${sessionScope.account.roleId }" hidden="true">
+                            <input name="id" value="${sessionScope.account.id }" hidden="true">
                             <fieldset class="fieldset">
                                 <h3 class="fieldset-title">Thông tin cá nhân</h3>
-
+                                <%
+                                    if (alert != null) {
+                                %>
+                                <p class="alert alert-danger" role="alert">
+                                    <%= alert %>
+                                </p>
+                                <%
+                                    }
+                                %>
                                 <div class="form-group avatar">
                                     <figure class="figure col-md-2 col-sm-3 col-xs-12">
 
-                                        <img class="img-rounded img-responsive avatar" name="image"
-                                             src="https://lh3.googleusercontent.com/a/default-user=s96-c"
+                                        <img class="img-rounded img-responsive avatar" name="image" src="${imgUrl}"
                                              alt="">
                                     </figure>
 
@@ -149,14 +157,14 @@
                                         <input type="button" value="Tải ảnh lên"
                                                onclick="BrowseServer();" class="btn btn-controls"/>
                                         <input type="text" name="avatar" id="avatar" hidden="true"
-                                               value="https://lh3.googleusercontent.com/a/default-user=s96-c">
+                                               value="${sessionScope.account.avatar}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Tên đăng nhập</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control" name="username"
-                                               value="user123">
+                                               value="${sessionScope.account.username}">
                                     </div>
                                 </div>
 
@@ -164,21 +172,21 @@
                                     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Họ tên</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control" name="name"
-                                               value="">
+                                               value="${sessionScope.account.fullname}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Địa chỉ</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control" name="address"
-                                               value="">
+                                               value="${sessionScope.account.address}">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-md-2 col-sm-3 col-xs-12 control-label">Số điện thoại</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control" name="phone"
-                                               value="">
+                                               value="${sessionScope.account.phoneNumber}">
                                     </div>
                                 </div>
                             </fieldset>
@@ -188,7 +196,7 @@
                                     <label class="col-md-2  col-sm-3 col-xs-12 control-label">Email</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="email" class="form-control" name="email"
-                                               value="abc@gmail.com">
+                                               value="${sessionScope.account.email}">
                                         <p class="help-block">Đây là Email của bạn</p>
                                     </div>
                                 </div>
@@ -196,7 +204,7 @@
                                     <label class="col-md-2  col-sm-3 col-xs-12 control-label">Facebook</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="text" class="form-control" name="facebook"
-                                               value="">
+                                               value="${sessionScope.account.facebook}">
                                         <p class="help-block">Tên Facebook của bạn</p>
                                     </div>
                                 </div>
@@ -204,7 +212,7 @@
                                     <label class="col-md-2  col-sm-3 col-xs-12 control-label">Mật khẩu</label>
                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                         <input type="password" class="form-control" name="password"
-                                               value="">
+                                               value="${sessionScope.account.password}">
                                         <input type="button" id="changePasswordBtn" class="change__password-btn"
                                                style="margin-top: 6px;" onclick="showChangePassword()"
                                                value="Thay đổi mật khẩu">
