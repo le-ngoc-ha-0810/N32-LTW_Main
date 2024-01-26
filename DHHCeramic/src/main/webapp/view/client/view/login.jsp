@@ -52,7 +52,7 @@
                     if (alert != null) {
                 %>
                 <p class="alert alert-danger" role="alert">
-                    <%= alert %>
+                    <%= alert%>
                 </p>
                 <%
                     }
@@ -65,7 +65,7 @@
                     <input type="password" id="password1"  name="password" required placeholder="Mật khẩu">
                     <small></small>
                 </div>
-                <div class="g-recaptcha" style="margin-top: 16px;"
+                <div class="g-recaptcha" style="margin-top: 16px; margin-left: 25px"
                      data-sitekey="6LfgknkhAAAAABXAQugTItLaoMe6aDZIIM-gtNQ0"></div>
                 <div id="forgot">
                     <div class="fg-left">
@@ -80,8 +80,23 @@
                     <p>Hoặc đăng nhập với</p>
                 </div>
                 <div id="icon-socs">
-                    <button class="left"><a class="fab fa-facebook-f"></a>Facebook</button>
-                    <button class="right"><a class="fab fa-google"></a>Google</button>
+                    <div class="auth-form__socials">
+                    <a href="https://www.facebook.com/dialog/oauth?client_id=615535650697352&redirect_uri=http://localhost:8080/DHHCeramic/login-facebook"
+                       class="auth-form__socials--facebook btn btn--size-s btn--with-icon">
+                        <i class="auth-form__socials-icon fab fa-facebook-square"></i>
+                        <span class="auth-form__socials-title">
+                              Facebook
+                         </span>
+                    </a>
+                    <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8080/DHHCeramic/login-google&response_type=code
+                &client_id=474718330255-ip6b590c85jul6if27u8hvcu7fkrttoc.apps.googleusercontent.com&approval_prompt=force"
+                       class="auth-form__socials--google btn btn--size-s btn--with-icon">
+                        <img src="${url}/images/home/google.png" alt="">
+                        <span class="auth-form__socials-title">
+                              Google
+                         </span>
+                    </a>
+                </div>
                 </div>
                 <div id="sign_up">
                     <p>Bạn chưa có tài khoản? <a
