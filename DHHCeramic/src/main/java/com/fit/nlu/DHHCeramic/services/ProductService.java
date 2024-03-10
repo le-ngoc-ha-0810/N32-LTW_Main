@@ -28,20 +28,21 @@ public interface ProductService {
     List<Product> searchByName(String productName, int currentPage, int productsPerPage);
 
     List<Product> getProductByPage(int currentPage, int productsPerPage);
+    List<Product> getProductByCategory(int currentPage, int productsPerPage, int cateId);
 //    List<Product> getProductByACS(int currentPage, int productsPerPage);
 //    List<Product> getProductByDESC(int currentPage, int productsPerPage);
-
+    List<Product> getProductBySale();
     int numOfProducts();
 
     int getCateId(int parseInt);
 
     List<Comment> getAllProductComments(int id);
 
-//    List<Product> searchByBrand(String brand, int currentPage, int productsPerPage);
+    List<Product> searchBySize(String size, int currentPage, int productsPerPage);
 
     List<String> getMoreImage(int id);
     void setMoreImage(MoreImage moreImage);
-    List<Product> searchByPrice(String brand, int priceFrom,int priceTo, int currentPage, int productsPerPage);
+    List<Product> searchByPrice( int priceFrom,int priceTo, int currentPage, int productsPerPage);
 //    List<Product> searchByRating(int rating, int currentPage, int productsPerPage);
 }
 

@@ -13,150 +13,106 @@
         <div class="sidebar__item">
             <h4>Tất cả loại gạch</h4>
             <ul>
-                <li><a href="#">Gạch giá rẻ</a></li>
-                <li><a href="#">Gạch lát nền</a></li>
-                <li><a href="#">Gạch ốp tường</a></li>
-                <li><a href="#">Gạch lát sân vườn</a></li>
-                <li><a href="#">Gạch giả gỗ</a></li>
-                <li><a href="#">Gạch ốp lát cao cấp</a></li>
-                <li><a href="#">Gạch tranh thảm</a></li>
-                <li><a href="#">Gạch trang trí</a></li>
-                <li><a href="#">Gạch vỉa hè</a></li>
-                <li><a href="#">Gạch kính lấy sáng</a></li>
-                <li><a href="#">Gạch lát cầu thang</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(1)">Gạch giá rẻ</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(1)">Gạch lát nền</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(2)">Gạch ốp tường</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(3)">Gạch lát sân vườn</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(4)">Gạch giả gỗ</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(5)">Gạch ốp lát cao cấp</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(6)">Gạch tranh thảm</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(7)">Gạch trang trí</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(8)">Gạch vỉa hè</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(9)">Gạch kính lấy sáng</a></li>
+                <li><a style="cursor: pointer;" onclick="return searchByCategory(10)">Gạch lát cầu thang</a></li>
             </ul>
         </div>
+        <%--        <div class="sidebar__item">--%>
+        <%--            <h4>Giá </h4>--%>
+        <%--            <div class="price-range-wrap">--%>
+        <%--                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"--%>
+        <%--                     data-min="10" data-max="540">--%>
+        <%--                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>--%>
+        <%--                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+        <%--                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>--%>
+        <%--                </div>--%>
+        <%--                <div class="range-slider">--%>
+        <%--                    <div class="price-input">--%>
+        <%--                        <input type="text"  maxlength="13"  name="priceFrom" id="priceFrom">--%>
+        <%--                        <input type="text"  maxlength="13" value="" name="priceTo" id="priceTo">--%>
+        <%--                        <input type="button"--%>
+        <%--                               onclick="return searchByPrice(document.getElementById('priceFrom').value,document.getElementById('priceTo').value)"--%>
+        <%--                               class="filter-button-solid" style="background-color: #efac92;"--%>
+        <%--                               value="ÁP DỤNG">--%>
+        <%--                    </div>--%>
+        <%--                </div>--%>
+        <%--            </div>--%>
+        <%--        </div>--%>
+        <!--Lọc giá-->
         <div class="sidebar__item">
-            <h4>Giá </h4>
-            <div class="price-range-wrap">
-                <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                     data-min="10" data-max="540">
-                    <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                    <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                </div>
-                <div class="range-slider">
-                    <div class="price-input">
-                        <input type="text" id="minamount">
-                        <input type="text" id="maxamount">
-                    </div>
-                </div>
+            <h4>Khoảng giá</h4>
+            <div class="filter_products-price-range-input" style="">
+                <input type="text" maxlength="13" class="filter-price-range-filter__input" placeholder="₫ TỪ" value=""
+                       name="priceFrom" id="priceFrom" style="float: left;width: 150px;">
+                <div class="filter-price-range-filter__range-line"></div>
+                <input type="text" maxlength="13" class="filter-price-range-filter__input" placeholder="₫ ĐẾN" value=""
+                       name="priceTo" id="priceTo" style=" width: 150px;margin-top: 10px;">
             </div>
+            <input type="button"
+                   onclick="return searchByPrice(document.getElementById('priceFrom').value,document.getElementById('priceTo').value)"
+                   class="filter-button-solid"
+                   style="background-color: #c43434;margin-top: 15px; color: white;border: none;border-radius: 2px;height: 35px;width: 150px;"
+                   value="ÁP DỤNG">
         </div>
-        <!--                    <div class="sidebar__item sidebar__item__color&#45;&#45;option">-->
-        <!--                        <h4>Colors</h4>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;white">-->
-        <!--                            <label for="white">-->
-        <!--                                White-->
-        <!--                                <input type="radio" id="white">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;gray">-->
-        <!--                            <label for="gray">-->
-        <!--                                Gray-->
-        <!--                                <input type="radio" id="gray">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;red">-->
-        <!--                            <label for="red">-->
-        <!--                                Red-->
-        <!--                                <input type="radio" id="red">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;black">-->
-        <!--                            <label for="black">-->
-        <!--                                Black-->
-        <!--                                <input type="radio" id="black">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;blue">-->
-        <!--                            <label for="blue">-->
-        <!--                                Blue-->
-        <!--                                <input type="radio" id="blue">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                        <div class="sidebar__item__color sidebar__item__color&#45;&#45;green">-->
-        <!--                            <label for="green">-->
-        <!--                                Green-->
-        <!--                                <input type="radio" id="green">-->
-        <!--                            </label>-->
-        <!--                        </div>-->
-        <!--                    </div>-->
         <div class="sidebar__item">
             <h4>Kích thước</h4>
-
             <div class="sidebar__item__size">
-                <label for="large">
-                    15x60cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('10 x 60')"
+                       class="brand-name">10x60</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="medium">
-                    15x80cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('15 x 75')"
+                       class="brand-name">15x75</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="small">
-                    20x90cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('100 x 100')"
+                       class="brand-name">100x100</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="tiny">
-                    20x40cm
-                    <input type="radio">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('19 x 19')"
+                       class="brand-name">19x19</label>
             </div>
 
             <div class="sidebar__item__size">
-                <label for="large">
-                    30x40cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('30 x 40')"
+                       class="brand-name">30x40</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="medium">
-                    30x60cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('30 x 60')"
+                       class="brand-name">30x60</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="small">
-                    40x40cm
-                    <input type="radio" >
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('40 x 40')"
+                       class="brand-name">40x40</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="tiny">
-                    40x80cm
-                    <input type="radio">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('40 x 80')"
+                       class="brand-name">40x80</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="large">
-                    50x50cm
-                    <input type="radio" id="large">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('120 x 180')"
+                       class="brand-name">120x180</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="medium">
-                    60x90cm
-                    <input type="radio" id="medium">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('60 x 90')"
+                       class="brand-name">60x90</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="small">
-                    60x60cm
-                    <input type="radio" id="small">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('60 x 60')"
+                       class="brand-name">60x60</label>
             </div>
             <div class="sidebar__item__size">
-                <label for="tiny">
-                    80x80cm
-                    <input type="radio" id="tiny">
-                </label>
+                <label style="cursor: pointer;" onclick="return searchBySize('80 x 80')"
+                       class="brand-name">80x80</label>
             </div>
         </div>
         <div class="sidebar__item">
@@ -166,7 +122,7 @@
                     <div class="latest-prdouct__slider__item">
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-1.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-1.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch lát cầu thang 40x90</h6>
@@ -175,7 +131,7 @@
                         </a>
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-2.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-2.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch con sâu lát vỉa hè</h6>
@@ -184,7 +140,7 @@
                         </a>
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-3.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-3.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch ốp tường 30x60 Catalan</h6>
@@ -196,7 +152,7 @@
                     <div class="latest-prdouct__slider__item">
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-1.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-1.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch lát cầu thang 40x90</h6>
@@ -205,7 +161,7 @@
                         </a>
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-2.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-2.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch con sâu lát vỉa hè</h6>
@@ -214,7 +170,7 @@
                         </a>
                         <a href="#" class="latest-product__item">
                             <div class="latest-product__item__pic">
-                                <img src="img/latest-product/lp-3.jpg" alt="">
+                                <img src="${url}/img/latest-product/lp-3.jpg" alt="">
                             </div>
                             <div class="latest-product__item__text">
                                 <h6>Gạch ốp tường 30x60 Catalan</h6>
@@ -227,4 +183,4 @@
         </div>
     </div>
 </div>
-<script src="${url}/js/jquery.js"></script>
+<%--<script src="${url}/js/jquery.js"></script>--%>

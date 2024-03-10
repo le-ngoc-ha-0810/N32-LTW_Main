@@ -1,4 +1,5 @@
 package com.fit.nlu.DHHCeramic.dao.impl;
+
 import com.fit.nlu.DHHCeramic.dao.ProductDao;
 import com.fit.nlu.DHHCeramic.jdbc.JDBCConnection;
 import com.fit.nlu.DHHCeramic.model.Category;
@@ -18,9 +19,8 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void insert(Product product) {
-        String sql = "INSERT INTO products(name, price, saleId,cateId, stock, image, des, isLike, manufacture, createdBy, createdDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO products(name, price, saleId,cateId, stock, image, des, status, isLike, manufacture, size, createdBy, createdDate) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
         Connection con = JDBCConnection.getJDBCConnection();
-
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, product.getName());
@@ -30,10 +30,12 @@ public class ProductDaoImpl implements ProductDao {
             ps.setInt(5, product.getStock());
             ps.setString(6, product.getImage());
             ps.setString(7, product.getDes());
-            ps.setInt(8, product.getIsLiked());
-            ps.setString(9, product.getManufacture());
-            ps.setString(10, product.getCreatedBy());
-            ps.setDate(11, (Date) product.getCreatedDate());
+            ps.setInt(8, product.getStatus());
+            ps.setInt(9, product.getIsLiked());
+            ps.setString(10, product.getManufacture());
+            ps.setString(11, product.getSize());
+            ps.setString(12, product.getCreatedBy());
+            ps.setDate(13, (Date) product.getCreatedDate());
             ps.executeUpdate();
             con.close();
         } catch (SQLException e) {
@@ -43,23 +45,25 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public void edit(Product product) {
-        String sql = "UPDATE products SET Product.name = ? , price = ?,stock=?,saleId=?, image = ?,cateId=?, des=?,isLike=?,manufacture=?, updateBy=?, updateAt=? WHERE id = ?";
+        String sql = "UPDATE products SET products.name = ? , price = ?,stock=?, saleId=?, image = ?,cateId=?, des=?,isLike=?,status =?,manufacture=?, size=?, updateBy=?, updateDate=? WHERE id = ?";
         Connection con = JDBCConnection.getJDBCConnection();
 
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, product.getName());
             ps.setLong(2, product.getPrice());
-            ps.setLong(3, product.getSaleId());
-            ps.setInt(4, product.getCategory().getId());
-            ps.setInt(5, product.getStock());
-            ps.setString(6, product.getImage());
+            ps.setInt(3, product.getStock());
+            ps.setLong(4, product.getSaleId());
+            ps.setString(5, product.getImage());
+            ps.setInt(6, product.getCategory().getId());
             ps.setString(7, product.getDes());
             ps.setInt(8, product.getIsLiked());
-            ps.setString(9, product.getManufacture());
-            ps.setString(10, product.getCreatedBy());
-            ps.setDate(11, (Date) product.getCreatedDate());
-            ps.setInt(12, product.getId());
+            ps.setInt(9, product.getStatus());
+            ps.setString(10, product.getManufacture());
+            ps.setString(11, product.getSize());
+            ps.setString(12, product.getUpdatedBy());
+            ps.setDate(13, (Date) product.getUpdatedDate());
+            ps.setInt(14, product.getId());
             ps.executeUpdate();
             con.close();
         } catch (SQLException e) {
@@ -86,8 +90,8 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public Product get(int id) {
-        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image,products.des, categories.cateName AS c_name, categories.id AS c_id ,products.isLike,products.manufacture"
-                + " FROM products INNER JOIN categories " + "ON products.cateId = categories.id WHERE products.id=?";
+        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike,products.status, products.manufacture, products.size"
+                + " FROM products INNER JOIN categories " + "ON products.cateId= categories.id WHERE products.id=?";
         Connection con = JDBCConnection.getJDBCConnection();
 
         try {
@@ -108,7 +112,9 @@ public class ProductDaoImpl implements ProductDao {
                 product.setDes(rs.getString("des"));
                 product.setCategory(category);
                 product.setIsLiked(rs.getInt("isLike"));
+                product.setStatus(rs.getInt("status"));
                 product.setManufacture(rs.getString("manufacture"));
+                product.setSize(rs.getString("size"));
                 return product;
 
             }
@@ -124,7 +130,7 @@ public class ProductDaoImpl implements ProductDao {
     public List<Product> getAll() {
 
         List<Product> productList = new ArrayList<Product>();
-        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike, products.manufacture"
+        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike, products.manufacture, products.size"
                 + " FROM products INNER JOIN categories " + "ON products.cateId= categories.id";
         Connection conn = JDBCConnection.getJDBCConnection();
 
@@ -145,9 +151,10 @@ public class ProductDaoImpl implements ProductDao {
                 product.setCategory(category);
                 product.setIsLiked(rs.getInt("isLike"));
                 product.setManufacture(rs.getString("manufacture"));
+                product.setSize(rs.getString("size"));
                 productList.add(product);
             }
-conn.close();
+            conn.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -186,7 +193,7 @@ conn.close();
                 product.setManufacture(rs.getString("manufacturer"));
                 productList.add(product);
             }
-conn.close();
+            conn.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -221,7 +228,7 @@ conn.close();
                 product.setManufacture(rs.getString("manufacture"));
                 productList.add(product);
             }
-conn.close();
+            conn.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -234,7 +241,7 @@ conn.close();
     public List<Product> searchByName(String productName, int currentPage, int productsPerPage) {
         List<Product> productList = new ArrayList<Product>();
         String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike,products.manufacture			"
-                + " FROM products , categories   where products.cateId = categories.id and product.name like ? LIMIT ?,?";
+                + " FROM products , categories   where products.cateId = categories.id and products.name like ? LIMIT ?,?";
         Connection conn = JDBCConnection.getJDBCConnection();
 
         try {
@@ -261,7 +268,7 @@ conn.close();
                 product.setManufacture(rs.getString("manufacture"));
                 productList.add(product);
             }
-conn.close();
+            conn.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -269,11 +276,12 @@ conn.close();
 
         return productList;
     }
+
     @Override
     public List<Product> getProductByPage(int currentPage, int productsPerPage) {
         List<Product> list = new ArrayList<Product>();
         String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike,products.manufacture"
-                + " FROM products INNER JOIN categories " + "ON products.cateId = categories.id LIMIT ?,?";
+                + " FROM products INNER JOIN categories " + "ON products.cateId = categories.id  WHERE products.status = 0 LIMIT ?,?";
         Connection conn = JDBCConnection.getJDBCConnection();
 
         try {
@@ -297,10 +305,10 @@ conn.close();
                 product.setManufacture(rs.getString("manufacture"));
                 list.add(product);
             }
-            System.out.println("Câu truy vấn SQL: " + sql);
-            System.out.println("currentPage: " + currentPage);
-            System.out.println("productsPerPage: " + productsPerPage);
-            System.out.println("Number of Products in ResultSet: " + list.size());
+//            System.out.println("Câu truy vấn SQL: " + sql);
+//            System.out.println("currentPage: " + currentPage);
+//            System.out.println("productsPerPage: " + productsPerPage);
+//            System.out.println("Number of Products in ResultSet: " + list.size());
 
             conn.close();
         } catch (SQLException e) {
@@ -309,6 +317,88 @@ conn.close();
         }
         return list;
     }
+
+    @Override
+    public List<Product> getProductByCategory(int currentPage, int productsPerPage, int cateId) {
+        List<Product> list = new ArrayList<Product>();
+        String sql = "SELECT products.id, products.name AS p_name, products.price, products.stock, products.saleId, products.image, products.des, categories.cateName AS c_name, categories.id AS c_id, products.isLike, products.manufacture"
+                + " FROM products INNER JOIN categories " + "ON products.cateId = categories.id WHERE categories.id = ? LIMIT ? OFFSET ?";
+        Connection conn = JDBCConnection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, cateId);
+            ps.setInt(2, currentPage * productsPerPage - productsPerPage);
+            ps.setInt(3, productsPerPage);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Category category = categoryService.get(rs.getInt("c_id"));
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("p_name"));
+                product.setPrice(rs.getLong("price"));
+                product.setStock(rs.getInt("stock"));
+                product.setSaleId(rs.getLong("saleId"));
+                product.setImage(rs.getString("image"));
+                product.setDes(rs.getString("des"));
+                product.setCategory(category);
+                product.setIsLiked(rs.getInt("isLike"));
+                product.setManufacture(rs.getString("manufacture"));
+                list.add(product);
+            }
+
+            System.out.println("Câu truy vấn SQL: " + sql);
+            System.out.println("cate_id: " + cateId);
+            System.out.println("currentPage: " + currentPage);
+            System.out.println("productsPerPage: " + productsPerPage);
+            System.out.println("Number of Products in ResultSet: " + list.size());
+
+
+            conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    @Override
+    public List<Product> getProductBySale() {
+
+        List<Product> productList = new ArrayList<Product>();
+        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,products.isLike, products.manufacture"
+                + " FROM products INNER JOIN categories " + "ON products.cateId= categories.id where products.saleId IS NOT NULL";
+        Connection conn = JDBCConnection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Category category = categoryService.get(rs.getInt("c_id"));
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("p_name"));
+                product.setPrice(rs.getLong("price"));
+                product.setStock(rs.getInt("stock"));
+                product.setSaleId(rs.getLong("saleId"));
+                product.setImage(rs.getString("image"));
+                product.setDes(rs.getString("des"));
+                product.setCategory(category);
+                product.setIsLiked(rs.getInt("isLike"));
+                product.setManufacture(rs.getString("manufacture"));
+                productList.add(product);
+            }
+            conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        return productList;
+    }
+
     @Override
     public int getNoOfProducts() {
         return getAll().size();
@@ -327,7 +417,7 @@ conn.close();
             while (rs.next()) {
                 result = rs.getInt("cateId");
             }
-conn.close();
+            conn.close();
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -353,7 +443,7 @@ conn.close();
                 listImg.add(rs.getString("url3"));
                 listImg.add(rs.getString("url4"));
             }
-conn.close();
+            conn.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -362,7 +452,7 @@ conn.close();
 
     @Override
     public void setMoreImage(MoreImage moreImage) {
-        String sql = "INSERT INTO moreimages(productId, url1,url2,url3,url4) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO moreimages(productId, url1, url2, url3,url4) VALUES (?,?,?,?,?)";
         Connection con = JDBCConnection.getJDBCConnection();
 
         try {
@@ -413,19 +503,19 @@ conn.close();
     }
 
     @Override
-    public List<Product> searchByPrice(String brand, int priceFrom, int priceTo, int currentPage, int productsPerPage) {
+    public List<Product> searchByPrice(int priceFrom, int priceTo, int currentPage, int productsPerPage) {
         List<Product> productList = new ArrayList<Product>();
-        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock,products.saleId, products.image, products.des , categories.cateName AS c_name, categories.id AS c_id,product.isLike,product.manufacture				"
-                + " FROM products , categories  where products.cateId = categories.id LIMIT ?,?";
+        String sql = "SELECT products.id, products.name AS p_name, products.price, products.stock, products.saleId, products.image, products.des, categories.cateName AS c_name, categories.id AS c_id, products.isLike, products.manufacture "
+                + " FROM products, categories  WHERE products.cateId = categories.id AND products.price BETWEEN ? AND ? LIMIT ?,?";
+
         Connection conn = JDBCConnection.getJDBCConnection();
 
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, "%" + brand + "%");
-            ps.setInt(2,priceFrom);
-            ps.setInt(3,priceTo);
-            ps.setInt(4,currentPage);
-            ps.setInt(5,productsPerPage);
+            ps.setInt(1, priceFrom);
+            ps.setInt(2, priceTo);
+            ps.setInt(3, currentPage);
+            ps.setInt(4, productsPerPage);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -441,9 +531,10 @@ conn.close();
                 product.setCategory(category);
 
                 product.setCategory(category);
-                product.setIsLiked(rs.getInt("isLiked"));
+                product.setIsLiked(rs.getInt("isLike"));
                 product.setManufacture(rs.getString("manufacture"));
                 productList.add(product);
+
             }
             conn.close();
         } catch (SQLException e) {
@@ -451,6 +542,52 @@ conn.close();
             e.printStackTrace();
         }
 
+        return productList;
+    }
+
+    @Override
+    public List<Product> searchBySize(String size, int currentPage, int productsPerPage) {
+        List<Product> productList = new ArrayList<Product>();
+        String sql = "SELECT products.id, products.name AS p_name, products.price,products.stock, products.saleId, products.image, products.des, categories.cateName AS c_name, categories.id AS c_id, products.isLike, products.size, products.manufacture "
+                + " FROM products, categories  WHERE products.cateId = categories.id AND products.size like ? LIMIT ?,?";
+        Connection conn = JDBCConnection.getJDBCConnection();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, "%" + size + "%");
+            ps.setInt(2, currentPage * productsPerPage - productsPerPage);
+            ps.setInt(3, productsPerPage);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Category category = categoryService.get(rs.getInt("c_id"));
+                Product product = new Product();
+                product.setId(rs.getInt("id"));
+                product.setName(rs.getString("p_name"));
+                product.setPrice(rs.getLong("price"));
+                product.setStock(rs.getInt("stock"));
+                product.setSaleId(rs.getLong("saleId"));
+                product.setImage(rs.getString("image"));
+                product.setDes(rs.getString("des"));
+                product.setCategory(category);
+
+                product.setCategory(category);
+                product.setIsLiked(rs.getInt("isLike"));
+                product.setSize(rs.getString("size"));
+                product.setManufacture(rs.getString("manufacture"));
+                productList.add(product);
+
+
+                System.out.println("Câu truy vấn SQL: " + sql);
+                System.out.println("currentPage: " + currentPage);
+                System.out.println("productsPerPage: " + productsPerPage);
+                System.out.println("Number of Products in ResultSet: " + productList.size());
+            }
+            conn.close();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         return productList;
     }
 

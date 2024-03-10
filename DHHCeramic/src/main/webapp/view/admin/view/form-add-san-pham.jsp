@@ -195,6 +195,10 @@
                             <label class="control-label">Nguồn gốc</label>
                             <input class="form-control" type="text" name="manufacture">
                         </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Trạng thái</label>
+                            <input class="form-control" type="text" name="status">
+                        </div>
                         <div class="form-group col-md-12">
                             <input type="button" value="Tải ảnh lên"
                                    onclick="BrowseServer();" class="btn btn-controls"/>
@@ -218,7 +222,8 @@
 <script src="${url}/js/plugins/pace.min.js"></script>
 <script>
     const inpFile = document.getElementById("inpFile");
-    const loadFile = document.getElementById("loadFile");
+    const loadFile = document.getElementById("loadFile")
+    4;
     const previewContainer = document.getElementById("imagePreview");
     const previewContainer = document.getElementById("imagePreview");
     const previewImage = previewContainer.querySelector(".image-preview__image");

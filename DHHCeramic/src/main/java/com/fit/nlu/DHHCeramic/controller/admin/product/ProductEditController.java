@@ -54,7 +54,9 @@ public class ProductEditController extends HttpServlet {
         String stock = request.getParameter("stock");//
         String des = request.getParameter("des");//
         int category = categoryService.get(request.getParameter("category")).getId();
-        String image = request.getParameter("image");//
+        String image = request.getParameter("avatar");//
+
+        int status = Integer.parseInt(request.getParameter("status"));//
         String size = request.getParameter("size");
         String user = request.getParameter("user");//
         Product product = new Product();
@@ -68,6 +70,7 @@ public class ProductEditController extends HttpServlet {
         product.setDes(des);
         product.setCategory(categoryService.get(category));
         product.setImage(image);
+        product.setStatus(status);
         product.setSize(size);
         product.setUpdatedBy(user);
         product.setUpdatedDate(java.sql.Date.valueOf(LocalDate.now()));

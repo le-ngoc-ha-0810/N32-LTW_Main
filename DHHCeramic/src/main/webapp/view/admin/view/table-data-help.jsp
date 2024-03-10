@@ -39,7 +39,7 @@
                     <div class="row element-button">
                         <div class="col-sm-2">
 
-                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/view/client/view/form-add-help.jsp" title="Thêm"><i
+                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/view/admin/view/form-add-help.jsp" title="Thêm"><i
                                     class="fas fa-plus"></i>
                                 Tạo mới hỗ trợ</a>
                         </div>
@@ -182,19 +182,19 @@
 MODAL
 -->
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/src/jquery.table2excel.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $('#sampleTable').DataTable();

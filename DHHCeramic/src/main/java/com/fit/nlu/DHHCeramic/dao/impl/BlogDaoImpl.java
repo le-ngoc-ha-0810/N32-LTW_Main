@@ -33,7 +33,7 @@ public class BlogDaoImpl implements BlogDao {
 
     @Override
     public void edit(Blog blog) {
-        String sql = "UPDATE blogs SET blogs.title = ? , blogs.image = ?,blogCate=?, date = ?,des=?, updateBy= ?,updateAt=?  WHERE id = ?";
+        String sql = "UPDATE blogs SET blogs.title = ? , blogs.image = ?,blogCate=?, date = ?,des=?, updateBy= ?,updateDate=?  WHERE id = ?";
         Connection con = JDBCConnection.getJDBCConnection();
         try {
             PreparedStatement ps = con.prepareStatement(sql);

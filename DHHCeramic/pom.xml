@@ -85,7 +85,24 @@
             <artifactId>javax.json</artifactId>
             <version>1.0.4</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>4.5.13</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.restfb/restfb -->
+        <dependency>
+            <groupId>com.restfb</groupId>
+            <artifactId>restfb</artifactId>
+            <version>2023.11.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/client/view/css/main.css">
+    <link rel="stylesheet" type="text/css" href="${url}/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- or -->
     <link rel="stylesheet" href=https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -66,7 +66,7 @@
                     </form>
                 </div>
                 <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" href="${pageContext.request.contextPath}/view/client/view/table-data-discount.jsp">Hủy bỏ</a>
+                <a class="btn btn-cancel" href="${pageContext.request.contextPath}/view/admin/view/table-data-discount.jsp">Hủy bỏ</a>
             </div>
         </div>
     </div>

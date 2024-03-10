@@ -41,11 +41,13 @@ public class CateEditController extends HttpServlet {
         Category category = new Category();
         category.setId(Integer.parseInt(request.getParameter("id")));
         category.setName(request.getParameter("name"));
+        category.setStatus(Integer.parseInt(request.getParameter("status")));
         category.setUpdatedBy(request.getParameter("user"));
         category.setUpdatedDate(java.sql.Date.valueOf(LocalDate.now()));
         cateService.edit(category);
+        System.out.println("Status value: " + category);
+        response.sendRedirect(request.getContextPath() + "/Admin/cate/list");
 
-        response.sendRedirect(request.getContextPath() + "/Admin/category/list");
 
     }
 }

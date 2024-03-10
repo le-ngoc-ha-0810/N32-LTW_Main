@@ -44,6 +44,7 @@ public class CateAddController extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         Category cate = new Category();
         cate.setName(request.getParameter("name"));
+        cate.setStatus(Integer.parseInt(request.getParameter("status")));
         cate.setId(Integer.parseInt(request.getParameter("id")));
         cate.setCreatedBy(request.getParameter("user"));
         cate.setCreatedDate(java.sql.Date.valueOf(LocalDate.now()));

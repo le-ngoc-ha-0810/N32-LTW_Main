@@ -71,6 +71,7 @@ public class AdminWelcome extends HttpServlet {
         request.getRequestDispatcher("/view/admin/view/index.jsp").forward(request, response);
     }
 
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);

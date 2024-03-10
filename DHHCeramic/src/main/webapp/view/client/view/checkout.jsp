@@ -103,7 +103,7 @@
 <!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
-        <div class="checkout__form">
+        <form class="checkout__form">
             <h4>Chi tiết hoá đơn</h4>
             <form action="#">
                 <div class="row">
@@ -186,7 +186,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </form>
     </div>
 </section>
 <!-- Checkout Section End -->

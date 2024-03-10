@@ -10,7 +10,7 @@
 <c:url value="/view/admin/static" var="url"></c:url>
 
 <!-- Main CSS-->
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/client/view/css/main.css">
+<link rel="stylesheet" type="text/css" href="${url}/css/main.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 <!-- or -->
 <link rel="stylesheet" href=https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -30,7 +30,7 @@
 
 
         <!-- User Menu-->
-        <li><a class="app-nav__item" href="${pageContext.request.contextPath}/view/client/view/index.jsp"><i class='bx bx-log-out bx-rotate-180'></i> </a>
+        <li><a class="app-nav__item" href="${pageContext.request.contextPath}/AdminLogout"><i class='bx bx-log-out bx-rotate-180'></i> </a>
 
         </li>
     </ul>
@@ -47,35 +47,35 @@
     </div>
     <hr>
     <ul class="app-menu">
-        <li><a class="app-menu__item active" href="${pageContext.request.contextPath}/view/client/view/index.jsp"><i class='app-menu__icon bx bx-tachometer'></i><span
+        <li><a class="app-menu__item menu-link " href="${pageContext.request.contextPath}/Admin/Welcome"><i class='app-menu__icon bx bx-tachometer'></i><span
                 class="app-menu__label">Bảng điều khiển</span></a></li>
-        <li><a class="app-menu__item " href="${pageContext.request.contextPath}/view/client/view/table-data-user.jsp"><i class='app-menu__icon bx bx-id-card'></i> <span
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/user/list"><i class='app-menu__icon bx bx-id-card'></i> <span
                 class="app-menu__label">Quản lý nguời dùng</span></a></li>
         <!--      <li><a class="app-menu__item" href="table-data-customer.jsp"><i class='app-menu__icon bx bx-user-voice'></i><span-->
         <!--              class="app-menu__label">Quản lý khách hàng</span></a></li>-->
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-category.jsp"><i
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/cate/list"><i
                 class='app-menu__icon bx bx bxs-category'></i><span class="app-menu__label">Quản lý danh mục</span></a>
         </li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-product.jsp"><i
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/product/list"><i
                 class='app-menu__icon bx bx-purchase-tag-alt'></i><span class="app-menu__label">Quản lý sản phẩm</span></a>
         </li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-oder.jsp"><i class='app-menu__icon bx bx-task'></i><span
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/order/list"><i class='app-menu__icon bx bx-task'></i><span
                 class="app-menu__label">Quản lý đơn hàng</span></a></li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-blog.jsp"><i class='app-menu__icon bx bx bxl-blogger'></i><span
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/blog/list"><i class='app-menu__icon bx bx bxl-blogger'></i><span
                 class="app-menu__label">Quản lý tin tức
           </span></a></li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-discount.jsp"><i class='app-menu__icon bx bx bxs-discount'></i><span
-                class="app-menu__label">Quản lý giảm giá
-          </span></a></li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-contact.jsp"><i class="app-menu__icon bx bxs-contact"></i><span
+<%--        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/A"><i class='app-menu__icon bx bx bxs-discount'></i><span--%>
+<%--                class="app-menu__label">Quản lý giảm giá--%>
+<%--          </span></a></li>--%>
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/contact/list"><i class="app-menu__icon bx bxs-contact"></i><span
                 class="app-menu__label">Quản lý liên hệ
           </span></a></li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-comment.jsp"><i class="app-menu__icon bx bxs-chat"></i><span
+        <li><a class="app-menu__item menu-link" href="${pageContext.request.contextPath}/Admin/comment/list"><i class="app-menu__icon bx bxs-chat"></i><span
                 class="app-menu__label">Quản lý bình luận
           </span></a></li>
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-help.jsp"><i class="app-menu__icon bx bxs-help-circle"></i><span
-                class="app-menu__label">Quản lý trợ giúp
-          </span></a></li>
+<%--        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/admin/view/table-data-help.jsp"><i class="app-menu__icon bx bxs-help-circle"></i><span--%>
+<%--                class="app-menu__label">Quản lý trợ giúp--%>
+<%--          </span></a></li>--%>
         <!--      <li><a class="app-menu__item" href="table-data-money.jsp"><i class='app-menu__icon bx bx-dollar'></i><span-->
         <!--            class="app-menu__label">Bảng kê lương</span></a></li>-->
         <!--      <li><a class="app-menu__item" href="quan-ly-bao-cao.jsp"><i-->
@@ -83,24 +83,36 @@
         <!--      </li>-->
         <!--      <li><a class="app-menu__item" href="page-calendar.jsp"><i class='app-menu__icon bx bx-calendar-check'></i><span-->
         <!--            class="app-menu__label">Lịch công tác </span></a></li>-->
-        <li><a class="app-menu__item" href="${pageContext.request.contextPath}/view/client/view/table-data-account.jsp"><i class='app-menu__icon bx bx-cog'></i><span class="app-menu__label">Cài
-            đặt tài khoản</span></a></li>
+<%--        <li><a class="app-menu__item" href="${pageContext.request.contextPath }/Admin/myAccount?id=${sessionScope.account.id}"><i class='app-menu__icon bx bx-cog'></i><span class="app-menu__label">Cài--%>
+<%--            đặt tài khoản</span></a></li>--%>
     </ul>
 </aside>
 
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
 <!--===============================================================================================-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/js/main.js"></script>
 <!--===============================================================================================-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!--===============================================================================================-->
-<script type="${pageContext.request.contextPath}/view/client/view/text/javascript" src="js/plugins/chart.js"></script>
+<script type="/text/javascript" src="${url}/js/plugins/chart.js"></script>
 <!--===============================================================================================-->
+<script>
+    $(document).ready(function() {
+        $(".menu-link").click(function() {
+            console.log("Clicked!"); // Kiểm tra xem đoạn mã này có được hiển thị trong Console không
+
+            $(".menu-link").removeClass("active");
+            $(this).addClass("active");
+        });
+    });
+</script>
+
+
 <script type="text/javascript">
     var data = {
         labels: ["Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6"],

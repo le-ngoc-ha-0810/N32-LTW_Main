@@ -10,7 +10,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/client/view/css/main.css">
+    <link rel="stylesheet" type="text/css" href="${url}/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- or -->
     <link rel="stylesheet" href=https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -168,7 +168,7 @@
                     </form>
                 </div>
                 <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" href="${pageContext.request.contextPath}/view/client/view/table-data-help.jsp">Hủy bỏ</a>
+                <a class="btn btn-cancel" href="${pageContext.request.contextPath}/view/admin/view/table-data-help.jsp">Hủy bỏ</a>
             </div>
         </div>
     </div>
@@ -176,12 +176,12 @@
 
 
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 
 </body>
 

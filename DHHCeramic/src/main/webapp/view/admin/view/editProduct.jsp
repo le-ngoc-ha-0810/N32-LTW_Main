@@ -184,6 +184,14 @@
                             <input class="form-control" type="text" name="price" value="${product.price}">
                         </div>
                         <div class="form-group col-md-6">
+                            <label class="control-label">Nguồn gốc</label>
+                            <input class="form-control" type="text" name="manufacture" value="${product.manufacture}">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="control-label">Trạng thái</label>
+                            <input class="form-control" type="text" name="status" value="${product.status}">
+                        </div>
+                        <div class="form-group col-md-6">
                             <label class="control-label">Tên loại gạch</label>
                             <input type="text" name="category" class="form-control"
                                    value="${product.category.name}" list="categories">
@@ -192,10 +200,6 @@
                                 <option value="${category.name}">
                                     </c:forEach>
                             </datalist>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label class="control-label">Nguồn gốc</label>
-                            <input class="form-control" type="text" name="manufacture" value="${product.manufacture}">
                         </div>
                         <div class="form-group col-md-12">
                             <input type="button" value="Tải ảnh lên"

@@ -25,6 +25,7 @@ public class ProductListClientController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //        String type = request.getParameter("type");
         List<Product> productList;
+        List<Product> productSale;
         int currentPage = 1;
         int productsPerPage = 12;
         if (request.getParameter("page") != null)
@@ -32,6 +33,7 @@ public class ProductListClientController extends HttpServlet {
                     request.getParameter("page"));
 //        if (type==null) {
         productList = productService.getProductByPage(currentPage, productsPerPage);
+        productSale = productService.getProductBySale();
 /*
         } else if(type.equals("desc")){
             productList = productService.getProductByDESC(currentPage, productsPerPage);
@@ -49,11 +51,13 @@ public class ProductListClientController extends HttpServlet {
 */
 
         request.setAttribute("productList", productList);
+        request.setAttribute("productSale", productSale);
         int numOfProduct = productService.numOfProducts();
         int numOfPages = numOfProduct / productsPerPage;
         if (numOfPages % productsPerPage > 0) {
             numOfPages++;
         }
+
         request.setAttribute("numOfPages", numOfPages);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("productsPerPage", productsPerPage);

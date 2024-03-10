@@ -56,9 +56,8 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
     }
 
 
-    @Override
     public void edit(User user) {
-        String sql = "UPDATE users SET  email = ? ,fullname=?, facebook=?, username = ?, password = ?, avatar = ?, address = ?, phoneNumber=?,birthday =?, status=?, roleId = ?, updatedBy=?, updatedAt=? WHERE id = ?";
+        String sql = "UPDATE users SET email=?, fullname=?, facebook=?, username=?, password=?, avatar=?, address=?, phoneNumber=?, birthday=?, status=?, roleId=?, updateBy=?, updateDate=? WHERE id=?";
         Connection con = JDBCConnection.getJDBCConnection();
 
         try {
@@ -71,17 +70,19 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
             ps.setString(6, user.getAvatar());
             ps.setString(7, user.getAddress());
             ps.setString(8, user.getPhoneNumber());
-            ps.setInt(9,user.getStatus());
-            ps.setInt(10, user.getRoleId());
-            ps.setString(11, user.getUpdatedBy());
-            ps.setDate(12, (Date) user.getUpdatedDate());
-            ps.setInt(13, user.getId());
+            ps.setDate(9, (Date) user.getBirthday());
+            ps.setInt(10, user.getStatus());
+            ps.setInt(11, user.getRoleId());
+            ps.setString(12, user.getUpdatedBy());
+            ps.setDate(13, (Date) user.getUpdatedDate());
+            ps.setInt(14, user.getId());
             ps.executeUpdate();
+            System.out.println("Phone number: " + user.getPhoneNumber());
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
+
 
     @Override
     public void delete(int id) {
@@ -121,7 +122,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setPhoneNumber(rs.getString("phoneNumber"));
                 user.setStatus(rs.getInt("status"));
-                user.setRoleId(Integer.parseInt(rs.getString("roleId")));
+                user.setRoleId(rs.getInt("roleId")); // Thay đổi ở đây
 
                 return user;
 
@@ -156,7 +157,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setPhoneNumber(rs.getString("phoneNumber"));
                 user.setStatus(rs.getInt("status"));
-                user.setRoleId(Integer.parseInt(rs.getString("roleId")));
+                user.setRoleId(rs.getInt("roleId")); // Thay đổi ở đây
 
                 return user;
 
@@ -191,9 +192,12 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setPhoneNumber(rs.getString("phoneNumber"));
                 user.setStatus(rs.getInt("status"));
-                user.setRoleId(Integer.parseInt(rs.getString("roleId")));
+                user.setRoleId(rs.getInt("roleId")); // Thay đổi ở đây
 
                 userList.add(user);
+
+                System.out.println("Câu truy vấn SQL: " + sql);
+                System.out.println("Number of Products in ResultSet: " + userList);
             }
 
         } catch (SQLException e) {
@@ -217,7 +221,6 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
             while (rs.next()) {
                 User user = new User();
-
                 user.setId(rs.getInt("id"));
                 user.setEmail(rs.getString("email"));
                 user.setFullname(rs.getString("fullname"));
@@ -228,7 +231,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
                 user.setAddress(rs.getString("address"));
                 user.setPhoneNumber(rs.getString("phoneNumber"));
                 user.setStatus(rs.getInt("status"));
-                user.setRoleId(Integer.parseInt(rs.getString("roleId")));
+                user.setRoleId(rs.getInt("roleId")); // Thay đổi ở đây
 
                 userList.add(user);
             }
@@ -287,7 +290,7 @@ public class UserDaoImpl extends JDBCConnection implements UserDao {
 
     @Override
     public String getPassword(String email) {
-        String sql = "SELECT user.password FROM users WHERE email LIKE ? ";
+        String sql = "SELECT users.password FROM users WHERE email LIKE ? ";
         Connection conn = JDBCConnection.getJDBCConnection();
 
         try {

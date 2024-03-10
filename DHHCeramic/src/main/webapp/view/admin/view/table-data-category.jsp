@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
+<%@ page buffer="64kb" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +41,8 @@
                     <div class="row element-button">
                         <div class="col-sm-2">
 
-                            <a class="btn btn-add btn-sm" href="${pageContext.request.contextPath}/view/client/view/form-add-cate.jsp" title="Thêm"><i
+                            <a class="btn btn-add btn-sm"
+                               href="${pageContext.request.contextPath}/view/admin/view/form-add-cate.jsp" title="Thêm"><i
                                     class="fas fa-plus"></i>
                                 Tạo mới loại sản phẩm</a>
                         </div>
@@ -81,163 +83,28 @@
                             <th width="10"><input type="checkbox" id="all"></th>
                             <th>Mã loại sản phẩm</th>
                             <th>Tên loại sản phẩm</th>
+                            <th width="100">Chức năng</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>005</td>
-                            <td>Gạch giá rẻ</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>613</td>
-                            <td>Gạch lát nền</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>040</td>
-                            <td>Gạch ốp tường</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>003</td>
-                            <td>Gạch lát sân vườn</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>004</td>
-                            <td>Gạch giả gỗ</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>001</td>
-                            <td>Gạch tranh thảm</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>721</td>
-                            <td>Gạch vỉa hè</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>041</td>
-                            <td>Gạch vỉa hè</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>037</td>
-                            <td>Gạch kính lấy sáng</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>032</td>
-                            <td>Gạch lát cầu thang</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="10"><input type="checkbox" name="check1" value="1"></td>
-                            <td>008</td>
-                            <td>Gạch cao cấp</td>
-                            <td>
-                                <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
-                                        onclick="myFunction(this)"><i class="fas fa-trash-alt"></i>
-                                </button>
-                                <button class="btn btn-primary btn-sm edit" type="button" title="Sửa" id="show-emp"
-                                        data-toggle="modal"
-                                        data-target="#ModalUP"><i class="fas fa-edit"></i></button>
-
-                            </td>
-                        </tr>
+                        <c:forEach items="${cateList}" var="cate">
+                            <tr>
+                                <td width="10"><input type="checkbox" name="check1" value="1"></td>
+                                <td>${cate.id}</td>
+                                <td>${cate.name}</td>
+                                <td class="table-td-center">
+                                    <button class="btn btn-primary btn-sm trash" type="button" title="Xóa"
+                                            onclick="confirmDelete(${cate.id})"><i class="fas fa-trash-alt"></i>
+                                    </button>
+                                    <a href="${pageContext.request.contextPath}/Admin/cate/edit?id=${cate.id}">
+                                        <button class="btn btn-primary btn-sm edit" type="button" title="Sửa"
+                                                id="show-emp"
+                                                data-toggle="modal" data-target="#ModalUP"><i class="fas fa-edit"></i>
+                                        </button>
+                                    </a>
+                                </td>
+                            </tr>
+                        </c:forEach>
                         </tbody>
                     </table>
                 </div>
@@ -246,63 +113,22 @@
     </div>
 </main>
 
-<!--
-  MODAL
--->
-<div class="modal fade" id="ModalUP" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static"
-     data-keyboard="false">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
 
-            <div class="modal-body">
-                <div class="row">
-                    <div class="form-group  col-md-12">
-          <span class="thong-tin-thanh-toan">
-            <h5>Chỉnh sửa thông tin loại sản phẩm cơ bản</h5>
-          </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Mã loại sản phẩm </label>
-                        <input class="form-control" type="number" value="71309005">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label class="control-label">Tên loại sản phẩm</label>
-                        <input class="form-control" type="text" required value="Bàn ăn gỗ Theresa">
-                    </div>
-
-                </div>
-                <BR>
-                <BR>
-                <BR>
-                <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" data-dismiss="modal" href="#">Hủy bỏ</a>
-                <BR>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-<!--
-MODAL
--->
 
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/view/client/view/src/jquery.table2excel.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+<script src="${url}/js/main.js"></script>
 <!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 <!-- Page specific javascripts-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- Data table plugin-->
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/view/client/view/js/plugins/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="${url}/js/plugins/dataTables.bootstrap.min.js"></script>
 
 <script type="text/javascript">
     $('#sampleTable').DataTable();
@@ -349,25 +175,19 @@ MODAL
     }
 </script>
 <script>
-    function deleteRow(r) {
-        var i = r.parentNode.parentNode.rowIndex;
-        document.getElementById("myTable").deleteRow(i);
+
+    function confirmDelete(userId) {
+        swal({
+            title: "Cảnh báo",
+            text: "Bạn có chắc chắn muốn xóa người dùng này?",
+            buttons: ["Hủy bỏ", "Đồng ý"],
+        }).then((willDelete) => {
+            if (willDelete) {
+                window.location.href = "${pageContext.request.contextPath}/Admin/cate/delete?id=" + userId;
+            }
+        });
     }
 
-    jQuery(function () {
-        jQuery(".trash").click(function () {
-            swal({
-                title: "Cảnh báo",
-                text: "Bạn có chắc chắn là muốn xóa sản phẩm này?",
-                buttons: ["Hủy bỏ", "Đồng ý"],
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal("Đã xóa thành công.!", {});
-                    }
-                });
-        });
-    });
     oTable = $('#sampleTable').dataTable();
     $('#all').click(function (e) {
         $('#sampleTable tbody :checkbox').prop('checked', $(this).is(':checked'));

@@ -105,6 +105,7 @@
 <section class="product-details spad">
     <div class="container">
         <div class="row">
+<%--hiển thị ảnh--%>
             <div class="col-lg-6 col-md-6">
                 <div class="product__details__pic">
                     <div class="product__details__pic__item">
@@ -169,6 +170,8 @@
                     </ul>
                 </div>
             </div>
+<%--    hết ảnh--%>
+<%--    bình luận --%>
             <div class="col-lg-12">
                 <div class="product__details__tab">
                     <ul class="nav nav-tabs" role="tablist">
@@ -279,6 +282,7 @@
                 </div>
             </div>
         </div>
+<%--        hết bình luận--%>
     </div>
     </div>
     </div>

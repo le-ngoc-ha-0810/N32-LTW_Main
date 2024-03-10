@@ -14,15 +14,15 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
     @Override
     public void insert(Category category) {
-        String sql = "INSERT INTO categories(cate_id,cate_name, created_by,created_date) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO categories(id,cateName, status, createdBy,createdDate) VALUES (?,?,?,?,?)";
         Connection con = getJDBCConnection();
-
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, category.getId());
             ps.setString(2, category.getName());
-            ps.setString(3, category.getCreatedBy());
-            ps.setDate(4, (Date) category.getCreatedDate());
+            ps.setInt(3, category.getStatus());
+            ps.setString(4, category.getCreatedBy());
+            ps.setDate(5, (Date) category.getCreatedDate());
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -32,16 +32,19 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
     @Override
     public void edit(Category category) {
-        String sql = "UPDATE categories SET cate_name = ?, update_by=?,update_at=? WHERE cate_id = ?";
+        String sql = "UPDATE categories SET cateName=?, status=?, updateBy =?, updateDate=? WHERE id = ?";
         Connection con = getJDBCConnection();
-
+        System.out.println("DAO" + category);
         try {
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, category.getName());
-            ps.setString(2, category.getUpdatedBy());
-            ps.setDate(3, (Date) category.getUpdatedDate());
-            ps.setInt(4, category.getId());
+            ps.setInt(2,category.getStatus());
+            ps.setString(3, category.getUpdatedBy());
+            ps.setDate(4, (Date) category.getUpdatedDate());
+            ps.setInt(5, category.getId());
+            System.out.println(category);
             ps.executeUpdate();
+            System.out.println("Updated status: " + category.getStatus());
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -50,7 +53,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
     @Override
     public void delete(int id) {
-        String sql = "DELETE FROM categories WHERE cate_id = ?";
+        String sql = "DELETE FROM categories WHERE id = ?";
         Connection con = getJDBCConnection();
 
         try {
@@ -65,7 +68,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
     @Override
     public Category get(int id) {
-        String sql = "SELECT * FROM categories WHERE cate_id = ? ";
+        String sql = "SELECT * FROM categories WHERE id = ? ";
         Connection con = getJDBCConnection();
 
         try {
@@ -76,9 +79,9 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
             while (rs.next()) {
                 Category category = new Category();
 
-                category.setId(rs.getInt("cate_id"));
-                category.setName(rs.getString("cate_name"));
-
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("cateName"));
+                category.setStatus(rs.getInt("status"));
                 return category;
 
             }
@@ -93,7 +96,6 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
         List<Category> categories = new ArrayList<Category>();
         String sql = "SELECT * FROM categories";
         Connection conn = getJDBCConnection();
-
         try {
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -101,9 +103,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
             while (rs.next()) {
                 Category category = new Category();
 
-                category.setId(rs.getInt("cate_id"));
-                category.setName(rs.getString("cate_name"));
-
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("cateName"));
                 categories.add(category);
             }
 
@@ -143,7 +144,7 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
 
     @Override
     public Category get(String name) {
-        String sql = "SELECT * FROM categories WHERE cate_name = ? ";
+        String sql = "SELECT * FROM categories WHERE cateName = ? ";
         Connection con = getJDBCConnection();
 
         try {
@@ -154,8 +155,8 @@ public class CategoryDaoImpl extends JDBCConnection implements CategoryDao {
             while (rs.next()) {
                 Category category = new Category();
 
-                category.setId(rs.getInt("cate_id"));
-                category.setName(rs.getString("cate_name"));
+                category.setId(rs.getInt("id"));
+                category.setName(rs.getString("cateName"));
 
                 return category;
 

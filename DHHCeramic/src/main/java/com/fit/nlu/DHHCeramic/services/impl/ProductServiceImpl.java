@@ -62,6 +62,12 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getProductByPage(int currentPage, int productsPerPage) {
         return productDao.getProductByPage(currentPage, productsPerPage);
     }
+    public List<Product> getProductByCategory(int currentPage, int productsPerPage, int cateId) {
+        return productDao.getProductByCategory(currentPage, productsPerPage,cateId);
+    }
+    public List<Product> getProductBySale() {
+        return productDao.getProductBySale();
+    }
 
 //    @Override
 //    public List<Product> getProductByACS(int currentPage, int productsPerPage) {
@@ -88,10 +94,10 @@ public class ProductServiceImpl implements ProductService {
         return productDao.getAllProductComments(id);
     }
 
-//    @Override
-//    public List<Product> searchByBrand(String brand, int currentPage, int productsPerPage) {
-//        return productDao.searchByBrand(brand, currentPage, productsPerPage);
-//    }
+    @Override
+    public List<Product> searchBySize(String size, int currentPage, int productsPerPage) {
+        return productDao.searchBySize(size, currentPage, productsPerPage);
+    }
 
     @Override
     public List<String> getMoreImage(int id) {
@@ -104,8 +110,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> searchByPrice(String brand, int priceFrom, int priceTo, int currentPage, int productsPerPage) {
-        return productDao.searchByPrice(brand, priceFrom, priceTo, currentPage, productsPerPage);
+    public List<Product> searchByPrice(int priceFrom, int priceTo, int currentPage, int productsPerPage) {
+        return productDao.searchByPrice(priceFrom, priceTo, currentPage, productsPerPage);
     }
 
 //    @Override

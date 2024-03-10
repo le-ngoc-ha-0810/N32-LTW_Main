@@ -12,6 +12,7 @@ public class Product extends BaseModel implements Serializable {
     private String des;
     private String image;
     private int isLike;
+    private int status;
     private String size;
     private String manufacture;
 
@@ -19,7 +20,7 @@ public class Product extends BaseModel implements Serializable {
         super();
     }
 
-    public Product(int id, String name, long price, long saleId, Category category, int stock, String des, String image, int isLike, String size, String manufacture) {
+    public Product(int id, String name, long price, long saleId, Category category, int stock, String des, String image, int isLike, int status, String size, String manufacture) {
         this.id = id;
         this.name = name;
         this.price = price;
@@ -29,6 +30,7 @@ public class Product extends BaseModel implements Serializable {
         this.des = des;
         this.image = image;
         this.isLike = isLike;
+        this.status = status;
         this.size = size;
         this.manufacture = manufacture;
     }
@@ -100,6 +102,14 @@ public class Product extends BaseModel implements Serializable {
         this.image = image;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public int getIsLiked() {
         return isLike;
     }
@@ -122,5 +132,22 @@ public class Product extends BaseModel implements Serializable {
 
     public void setManufacture(String manufacture) {
         this.manufacture = manufacture;
+    }
+
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", saleId=" + saleId +
+                ", category=" + category +
+                ", stock=" + stock +
+                ", des='" + des + '\'' +
+                ", image='" + image + '\'' +
+                ", isLike=" + isLike +
+                ", size='" + size + '\'' +
+                ", manufacture='" + manufacture + '\'' +
+                '}';
     }
 }

@@ -35,11 +35,14 @@ public class VerifyController extends HttpServlet {
         if (code.equals(user.getCode())) {
             userService.register(user.getEmail(), user.getUsername(), SecurityUtils.hash(user.getPassword()));
             SendEmail.sendMail(user.getEmail(), "DHH-Welcome", "Welcome to DHH. Your account has been verified!");
-
-            response.sendRedirect(request.getContextPath() + "/login");
+//            response.sendRedirect(request.getContextPath() + "/login");
+            String alert = "Bạn đã xác nhận thành công";
+            request.setAttribute("alert", alert);
+            request.getRequestDispatcher(Constant.Path.LOGIN).forward(request, response);
         } else {
             SendEmail.sendMail(user.getEmail(), "DHH-Welcome", "Welcome to DHH. Failed to verify your account!");
-
+            String alert = "Xác nhận không thành công, hãy xác nhận email";
+            request.setAttribute("alert", alert);
             request.getRequestDispatcher(Constant.Path.REGISTER).forward(request, response);
         }
     }

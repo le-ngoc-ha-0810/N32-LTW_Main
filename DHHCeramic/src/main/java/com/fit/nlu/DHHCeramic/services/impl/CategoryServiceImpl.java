@@ -10,7 +10,7 @@ import java.util.List;
 
 
 public class CategoryServiceImpl implements CategoryService {
-    CategoryDao categoryDao = (CategoryDao) new CategoryDaoImpl();
+    CategoryDao categoryDao = new CategoryDaoImpl();
 
     @Override
     public void insert(Category category) {
@@ -21,6 +21,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void edit(Category newCategory) {
         Category oldCate = categoryDao.get(newCategory.getId());
         oldCate.setName(newCategory.getName());
+        oldCate.setStatus(newCategory.getStatus());
         categoryDao.edit(oldCate);
 
     }

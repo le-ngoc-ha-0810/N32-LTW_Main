@@ -1,3 +1,4 @@
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
@@ -10,7 +11,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Main CSS-->
-  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/client/view/css/main.css">
+  <link rel="stylesheet" type="text/css" href="${url}/css/main.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
   <!-- or -->
   <link rel="stylesheet" href=https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -40,10 +41,10 @@
         <div class="row">
        <!-- col-6 -->
        <div class="col-md-6">
-        <div class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
+        <div  class="widget-small primary coloured-icon"><i class='icon bx bxs-user-account fa-3x'></i>
           <div class="info">
-            <h4>Tổng khách hàng</h4>
-            <p><b>56 khách hàng</b></p>
+            <h4>Tổng người dùng</h4>
+            <p><b>${users}</b></p>
             <p class="info-tong">Tổng số khách hàng được quản lý.</p>
           </div>
         </div>
@@ -53,7 +54,7 @@
             <div class="widget-small info coloured-icon"><i class='icon bx bxs-data fa-3x'></i>
               <div class="info">
                 <h4>Tổng sản phẩm</h4>
-                <p><b>249 sản phẩm</b></p>
+                <p><b>${products}</b></p>
                 <p class="info-tong">Tổng số sản phẩm được quản lý.</p>
               </div>
             </div>
@@ -63,7 +64,7 @@
             <div class="widget-small warning coloured-icon"><i class='icon bx bxs-shopping-bags fa-3x'></i>
               <div class="info">
                 <h4>Tổng đơn hàng</h4>
-                <p><b>247 đơn hàng</b></p>
+                <p><b>${items}</b></p>
                 <p class="info-tong">Tổng số hóa đơn bán hàng trong tháng.</p>
               </div>
             </div>
@@ -73,7 +74,7 @@
             <div class="widget-small danger coloured-icon"><i class='icon bx bxs-error-alt fa-3x'></i>
               <div class="info">
                 <h4>Sắp hết hàng</h4>
-                <p><b>4 sản phẩm</b></p>
+                <p><b>${lowStockProductCount}</b></p>
                 <p class="info-tong">Số sản phẩm cảnh báo hết cần nhập thêm.</p>
               </div>
             </div>
@@ -149,25 +150,25 @@
                     <tbody>
                       <tr>
                         <td>#183</td>
-                        <td>Hột vịt muối</td>
+                        <td>Nguyễn Thị A</td>
                         <td>21/7/1992</td>
                         <td><span class="tag tag-success">0921387221</span></td>
                       </tr>
                       <tr>
                         <td>#219</td>
-                        <td>Bánh tráng trộn</td>
+                        <td>Lê Văn B</td>
                         <td>30/4/1975</td>
                         <td><span class="tag tag-warning">0912376352</span></td>
                       </tr>
                       <tr>
                         <td>#627</td>
-                        <td>Cút rang bơ</td>
+                        <td>Mai Thị C</td>
                         <td>12/3/1999</td>
                         <td><span class="tag tag-primary">01287326654</span></td>
                       </tr>
                       <tr>
                         <td>#175</td>
-                        <td>Hủ tiếu nam vang</td>
+                        <td>Trần Thị D</td>
                         <td>4/12/20000</td>
                         <td><span class="tag tag-danger">0912376763</span></td>
                       </tr>
@@ -210,18 +211,18 @@
     <div class="text-center" style="font-size: 13px">
     </div>
   </main>
-  <script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
+  <script src="${url}/js/jquery-3.2.1.min.js"></script>
   <!--===============================================================================================-->
-  <script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-  <script src="${pageContext.request.contextPath}/view/client/view/https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
+  <script src="${url}/js/popper.min.js"></script>
+  <script src="${url}/https://unpkg.com/boxicons@latest/dist/boxicons.js"></script>
   <!--===============================================================================================-->
-  <script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
+  <script src="${url}/js/bootstrap.min.js"></script>
   <!--===============================================================================================-->
-  <script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
+  <script src="${url}/js/main.js"></script>
   <!--===============================================================================================-->
-  <script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+  <script src="${url}/js/plugins/pace.min.js"></script>
   <!--===============================================================================================-->
-  <script type="${pageContext.request.contextPath}/view/client/view/text/javascript" src="js/plugins/chart.js"></script>
+  <script type="/text/javascript" src="${url}/js/plugins/chart.js"></script>
   <!--===============================================================================================-->
   <script type="text/javascript">
     var data = {

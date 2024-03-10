@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/client/static" var="url"></c:url>
+<%
+    String alert = (String) request.getAttribute("alert");
+%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -40,7 +43,7 @@
                 <div class="breadcrumb__text">
                     <h2>Liên hệ</h2>
                     <div class="breadcrumb__option">
-                        <a href="${pageContext.request.contextPath}/view/client/view/index.jsp">Trang chủ</a>
+                        <a href="${pageContext.request.contextPath}/welcome">Trang chủ</a>
                         <span>Liên hệ</span>
                     </div>
                 </div>
@@ -115,17 +118,33 @@
                 </div>
             </div>
         </div>
-        <form action="#">
+        <%
+            if (alert != null) {
+        %>
+        <p class="alert alert-danger" role="alert">
+            <%= alert %>
+        </p>
+        <%
+            }
+        %>
+        <form id="contactForm" name="contactForm" action="sendContact">
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Tên của bạn">
+                    <label class="col-form-label">Họ và tên *</label>
+                    <input type="text"  name="name" id="name" placeholder="Nhập tên của bạn">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Địa chỉ mail">
+                    <label class="col-form-label">Email *</label>
+                    <input type="text" name="email" id="email" placeholder="Địa chỉ mail">
+                </div>
+                <div class="col-lg-12 text-left">
+                    <label class="col-form-label">Tiêu đề</label>
+                    <input type="text" class="form-control" name="title" id="phone" placeholder="Tiêu đề">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <textarea placeholder="Phản hồi"></textarea>
-                    <button type="submit" class="site-btn">Gửi phản hồi</button>
+                    <textarea name="message" id="message" cols="30" rows="4" placeholder="Phản hồi" required></textarea>
+                    <input type="submit" class="site-btn" value="Gửi phản hồi" style="color: white">
+                    <span class="submitting"></span>
                 </div>
             </div>
         </form>

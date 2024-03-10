@@ -13,7 +13,7 @@
 <body>
 <div class="container-center">
     <h2>Đừng Lo!</h2>
-    <form action="forgotPassword" method="post">
+    <form action="${pageContext.request.contextPath}/forgotPassword" method="post">
         <h4>
             Hãy điền email của bạn<br>
             và chúng tôi sẽ xử lí phần còn lại
@@ -28,7 +28,7 @@
 
     </form>
 
-    <p>Bạn đã nhớ mật khẩu? <a href="${pageContext.request.contextPath}/view/client/view/login.jsp">Đăng nhập</a></p>
+    <p>Bạn đã nhớ mật khẩu? <a href="${pageContext.request.contextPath}/login">Đăng nhập</a></p>
 </div>
 </body>
 </html>

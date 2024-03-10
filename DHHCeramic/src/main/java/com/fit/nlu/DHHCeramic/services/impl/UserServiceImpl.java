@@ -1,6 +1,5 @@
 package com.fit.nlu.DHHCeramic.services.impl;
 
-
 import com.fit.nlu.DHHCeramic.dao.UserDao;
 import com.fit.nlu.DHHCeramic.dao.impl.UserDaoImpl;
 import com.fit.nlu.DHHCeramic.model.User;
@@ -9,7 +8,6 @@ import com.fit.nlu.DHHCeramic.util.SecurityUtils;
 
 import java.io.File;
 import java.util.List;
-
 
 public class UserServiceImpl implements UserService {
     UserDao userDao = new UserDaoImpl();
@@ -55,7 +53,6 @@ public class UserServiceImpl implements UserService {
         if (user != null && SecurityUtils.hash(password).equals(user.getPassword())) {
             return user;
         }
-
         return null;
     }
 
@@ -65,7 +62,6 @@ public class UserServiceImpl implements UserService {
         if (user != null && SecurityUtils.hash(password).equals(user.getPassword())) {
             return user;
         }
-
         return null;
     }
 

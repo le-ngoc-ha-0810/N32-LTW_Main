@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:url value="/view/admin/static" var="url"></c:url>
+<%@ page buffer="64kb" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Main CSS-->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/view/client/view/css/main.css">
+    <link rel="stylesheet" type="text/css" href="${url}/css/main.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <!-- or -->
     <link rel="stylesheet" href=https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -138,8 +139,9 @@
 <main class="app-content">
     <div class="app-title">
         <ul class="app-breadcrumb breadcrumb">
-            <li class="breadcrumb-item">Danh sách người dùng</li>
-            <li class="breadcrumb-item"><a href="#">Thêm người dùng</a></li>
+            <li class="breadcrumb-item"><a
+                    href="${pageContext.request.contextPath}/Admin/user/list">Danh sách người dùng</a></li>
+            <li class="breadcrumb-item"><a>Thêm người dùng</a></li>
         </ul>
     </div>
     <div class="row">
@@ -156,73 +158,56 @@
                         </div>
 
                     </div>
-                    <form class="row">
-                        <div class="form-group col-md-4">
-                            <label class="control-label">ID người dùng</label>
-                            <input class="form-control" type="text">
-                        </div>
+                    <form  class="row" role="form" action="${pageContext.request.contextPath}/Admin/user/add"
+                          method="post">
+                        <input type="hidden" name="user"
+                               value="${sessionScope.account.username}">
                         <div class="form-group col-md-4">
                             <label class="control-label">Tên người dùng</label>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="text" name="username" required>
                         </div>
                         <div class="form-group  col-md-4">
                             <label class="control-label">Mật khẩu</label>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="text" name="password" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="control-label">Email</label>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="text" name="email" required>
                         </div>
                         <div class="form-group  col-md-4">
                             <label class="control-label">Facebook</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text" name="facebook">
                         </div>
                         <div class="form-group col-md-4">
                             <label class="control-label">Họ và tên</label>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="text" name="fullname" required>
                         </div>
                         <div class="form-group col-md-4">
                             <label class="control-label">Địa chỉ</label>
-                            <input class="form-control" type="text" required>
+                            <input class="form-control" type="text" name="address" required>
                         </div>
                         <div class="form-group  col-md-4">
                             <label class="control-label">Số điện thoại</label>
-                            <input class="form-control" type="number" required>
+                            <input class="form-control" type="number" name="phoneNumber" required>
                         </div>
-                        <div class="form-group  col-md-3">
-                            <label for="exampleSelect1" class="control-label">Trạng thái</label>
-                            <select class="form-control" id="exampleSelect">
-                                <option>-- Chọn trạng thái --</option>
-                                <option>Bình thường</option>
-                            </select>
+                        <div class="form-group  col-md-4">
+                            <label class="control-label">Quyền</label>
+                            <input class="form-control" type="text" name="roleId" required>
                         </div>
-                        <div class="form-group  col-md-3">
-                            <label for="exampleSelect1" class="control-label">Chức vụ</label>
-                            <select class="form-control" id="exampleSelect1">
-                                <option>-- Chọn quyền --</option>
-                                <option>Admin</option>
-                                <option>Người dùng</option>
-                            </select>
+                        <div class="form-group  col-md-4">
+                            <label class="control-label">Trạng Thái</label>
+                            <input class="form-control" type="text" name="status" value="1" required>
                         </div>
                         <div class="form-group col-md-12">
-                            <label class="control-label">Ảnh 3x4 người dùng</label>
-                            <div id="myfileupload">
-                                <input type="file" id="uploadfile" name="ImageUpload" onchange="readURL(this);"/>
-                            </div>
-                            <div id="thumbbox">
-                                <img height="300" width="300" alt="Thumb image" id="thumbimage" style="display: none"/>
-                                <a class="removeimg" href="javascript:"></a>
-                            </div>
-                            <div id="boxchoice">
-                                <a href="javascript:" class="Choicefile"><i class='bx bx-upload'></i></a>
-                                <p style="clear:both"></p>
-                            </div>
-
+                            <input type="button" value="Tải ảnh lên"
+                                   onclick="BrowseServer();" class="btn btn-controls"/>
+                            <input type="text" name="avatar" id="avatar">
                         </div>
+
+                        <button class="btn btn-save" type="submit">Lưu lại</button>
+                        <a class="btn btn-cancel" href="${pageContext.request.contextPath}/Admin/user/list">Hủy bỏ</a>
                     </form>
                 </div>
-                <button class="btn btn-save" type="button">Lưu lại</button>
-                <a class="btn btn-cancel" href="${pageContext.request.contextPath}/view/client/view/table-data-user.jsp">Hủy bỏ</a>
             </div>
         </div>
     </div>
@@ -263,12 +248,11 @@ MODAL
 -->
 
 <!-- Essential javascripts for application to work-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/jquery-3.2.1.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/popper.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/view/client/view/js/main.js"></script>
-<!-- The javascript plugin to display page loading on top-->
-<script src="${pageContext.request.contextPath}/view/client/view/js/plugins/pace.min.js"></script>
+<script src="${url}/js/jquery-3.2.1.min.js"></script>
+<script src="${url}/js/popper.min.js"></script>
+<script src="${url}/js/bootstrap.min.js"></script>
+<script src="${url}/js/main.js"></script>
+<script src="${url}/js/plugins/pace.min.js"></script>
 
 </body>
 
