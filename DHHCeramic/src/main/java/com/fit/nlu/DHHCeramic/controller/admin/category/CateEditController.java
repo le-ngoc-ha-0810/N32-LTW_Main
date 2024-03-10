@@ -48,5 +48,6 @@ public class CateEditController extends HttpServlet {
         System.out.println("Status value: " + category);
         response.sendRedirect(request.getContextPath() + "/Admin/cate/list");
 
+
     }
 }
